@@ -1,0 +1,336 @@
+@import '../../styles/scss/mixine-font';
+@import '../../styles/scss/variables';
+
+.footer {
+  background-color: $colorGrey1;
+  margin: auto 0 0;
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1426px;
+    width: 100%;
+    padding: 71px 30px 116px;
+  }
+  &__about {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 20px 0 0;
+  }
+  &__logo {
+    background-image: url('../../styles/images/logo.svg');
+    width: 170px;
+    height: 67px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 0 15px 0;
+  }
+  &__description {
+    @include font(16px, 400, 24px, $colorWhite);
+    cursor: default;
+    margin: 15px 0 45px;
+  }
+  &__subcribeText {
+    @include font(12px, 400, 18px, $colorWhite);
+    cursor: default;
+  }
+  &__subcribe {
+    margin: 14px 0 0;
+    position: relative;
+    &-input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $colorWhite;
+      width: 282px;
+      height: 59px;
+      border: 2px solid $colorWhite;
+      border-radius: 36px;
+      padding: 0 60px 0 20px;
+      @include font(14px, 400, 18px, $colorGrey1);
+      transition: all ease 0.5s;
+      &:focus {
+        border: 2px solid $colorYellow1;
+      }
+      &::placeholder {
+        @include font(12px, 400, 18px, rgba(92, 99, 112, 0.6));
+      }
+    }
+    &-icon {
+      z-index: 1;
+      background-image: url('../../styles/images/mail-arrow-icon.svg');
+      background-color: $colorWhite;
+      width: 39px;
+      height: 39px;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      position: absolute;
+      top: 18%;
+      right: 15%;
+      transition: opacity ease 0.5s;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__menu-container {
+    display: flex;
+    max-width: 394px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  &__menu {
+    &-title {
+      @include font(20px, 600, 30px, $colorWhite);
+      margin: 0 0 25px;
+      cursor: default;
+    }
+    &-item {
+      margin: 0 0 20px;
+      &:last-of-type {
+        margin: 0;
+      }
+      &-link {
+        @include font(14px, 400, 21px, $colorWhite);
+        padding: 0 0 1px;
+        border-bottom: 0.8px solid $colorGrey1;
+        transition: all ease 0.5s;
+        &:hover {
+          border-bottom: 0.8px solid $colorWhite;
+        }
+      }
+    }
+  }
+  &__priceList {
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $colorYellow1;
+      width: 214px;
+      height: 60px;
+      border-radius: 79px;
+      @include font(14px, 700, 17px, $colorWhite);
+      transition: opacity ease 0.5s;
+      &:hover {
+        opacity: 0.8;
+      }
+      &_desktop {
+        display: flex;
+      }
+      &_adaptive {
+        display: none;
+      }
+    }
+    &-icon {
+      background-image: url('../../styles/images/priceArrow-icon.svg');
+      width: 13px;
+      height: 12px;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0 0 0 15px;
+    }
+  }
+  &__messengers {
+    &-title {
+      @include font(14px, 400, 21px, $colorWhite);
+      margin: 20px 0 15px;
+      cursor: default;
+    }
+    &-items {
+      display: flex;
+    }
+    &-item {
+      display: block;
+      transition: all ease 0.5s;
+      &:hover {
+        opacity: 0.8;
+      }
+      &_type {
+        &_whatsup {
+          background-image: url('../../styles/images/whatsup-icon.svg');
+          width: 39px;
+          height: 39px;
+          background-position: center;
+          background-repeat: no-repeat;
+          margin: 0 10px 0 0;
+        }
+        &_tlgm {
+          background-image: url('../../styles/images/telegram-icon.svg');
+          width: 39px;
+          height: 39px;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    &-link {
+      display: block;
+      width: 39px;
+      height: 39px;
+    }
+  }
+  &__contacts-container {
+    display: flex;
+    max-width: 462px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 30px 0 40px;
+  }
+  &__contacts {
+    margin: 0 0 0 30px;
+    &-text {
+      @include font(14px, 600, 21px, $colorWhite);
+      cursor: default;
+    }
+    &-additionalText {
+      @include font(12px, 300, 18px, $colorWhite);
+      cursor: default;
+    }
+  }
+  &__callback {
+    &-btn {
+      background-color: transparent;
+      @include font(10px, 400, 15px, $colorWhite);
+      padding: 0 0 1px;
+      border-bottom: 0.8px solid $colorWhite;
+      transition: all ease 0.5s;
+      margin: 5px 0 25px;
+      &:hover {
+        border-bottom: 0.8px solid $colorYellow1;
+      }
+    }
+  }
+  &__payment-items {
+    display: flex;
+    margin: 25px 0 0;
+  }
+  &__payment-item {
+    &_type {
+      &_visa {
+        background-image: url('../../styles/images/visa-icon.svg');
+        width: 61px;
+        height: 40px;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 5px 0 0;
+      }
+      &_mastercard {
+        background-image: url('../../styles/images/mastercard-icon.svg');
+        width: 61px;
+        height: 40px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .footer {
+    &__wrapper {
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 30px;
+    }
+    &__about {
+      margin: 0;
+      max-width: 460px;
+      width: 100%;
+    }
+    &__logo-container {
+      display: flex;
+      max-width: 460px;
+      width: 100%;
+      align-items: center;
+    }
+    &__logo {
+      background-image: url('../../styles/images/logo.svg');
+      width: 97px;
+      height: 41px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0 45px 0 0;
+    }
+    &__description {
+      margin: 15px 0;
+    }
+    &__subcribe {
+      margin: 15px 0 30px;
+      width: 290px;
+      &-input {
+        width: 290px;
+      }
+      &-icon {
+        right: 5%;
+      }
+    }
+    &__priceList {
+      &-title {
+        display: none;
+      }
+      &-btn {
+        &_desktop {
+          display: none;
+        }
+        &_adaptive {
+          display: flex;
+          width: 150px;
+          height: 40px;
+          @include font(12px, 700, 15px, $colorWhite);
+        }
+      }
+      &-icon {
+        width: 9px;
+        height: 12px;
+      }
+    }
+    &__menu-container {
+      max-width: 460px;
+      width: 100%;
+      margin: 0 0 25px;
+    }
+    &__container {
+      max-width: 123px;
+      width: 100%;
+    }
+    &__contacts-container {
+      margin: 0;
+      max-width: 460px;
+      width: 100%;
+      flex-direction: row-reverse;
+    }
+    &__contacts {
+      margin: 0;
+    }
+    &__messengers {
+      &-title {
+        @include font(14px, 400, 21px, $colorWhite);
+        margin: 55px 0 15px;
+        cursor: default;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    &__wrapper {
+      padding: 16px 15px;
+    }
+    &__description {
+      @include font(12px, 400, 18px, $colorWhite);
+    }
+    &__menu {
+      &-item {
+        &-link {
+          @include font(12px, 400, 18px, $colorWhite);
+        }
+      }
+    }
+  }
+}
