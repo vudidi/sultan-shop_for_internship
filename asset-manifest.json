@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/sultan-shop_for_internship/static/css/main.58abb0c2.css",
+    "main.css": "/sultan-shop_for_internship/static/css/main.4842ea0e.css",
     "main.js": "/sultan-shop_for_internship/static/js/main.85610e30.js",
     "static/js/787.93d58c4f.chunk.js": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js",
     "static/media/logo-dark.svg": "/sultan-shop_for_internship/static/media/logo-dark.9a733959f7808d704301.svg",
@@ -23,12 +23,12 @@
     "static/media/burger-icon-close.svg": "/sultan-shop_for_internship/static/media/burger-icon-close.dfa58e2021799258d971.svg",
     "static/media/priceArrow-icon.svg": "/sultan-shop_for_internship/static/media/priceArrow-icon.a8c9e58787aa8d57aac5.svg",
     "static/media/mail-arrow-icon.svg": "/sultan-shop_for_internship/static/media/mail-arrow-icon.dc272fb00c0a6f28eaaf.svg",
-    "main.58abb0c2.css.map": "/sultan-shop_for_internship/static/css/main.58abb0c2.css.map",
+    "main.4842ea0e.css.map": "/sultan-shop_for_internship/static/css/main.4842ea0e.css.map",
     "main.85610e30.js.map": "/sultan-shop_for_internship/static/js/main.85610e30.js.map",
     "787.93d58c4f.chunk.js.map": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.58abb0c2.css",
+    "static/css/main.4842ea0e.css",
     "static/js/main.85610e30.js"
   ]
 }
