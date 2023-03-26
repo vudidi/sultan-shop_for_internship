@@ -7,18 +7,18 @@
   margin: 0 auto;
   max-width: 1426px;
   width: 100%;
-  padding: 14px 30px 45px;
+  padding: 14px 30px 30px;
   &__burger {
     z-index: 2;
     position: fixed;
-    top: 120px;
+    top: 119px;
     right: 0;
     left: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     visibility: hidden;
     opacity: 0;
-    transition: all 0.35s ease-in;
+    overflow-y: scroll;
   }
   &__adaptive {
     display: none;
@@ -186,6 +186,7 @@
     }
     &-btn {
       background-image: url('../../styles/images/search-icon.svg');
+      background-color: transparent;
       width: 39px;
       height: 39px;
       background-position: center;
@@ -453,8 +454,16 @@
       }
     }
     &__adaptive {
+      background-color: $colorWhite;
       display: block;
       padding: 0 50px;
+      &_open {
+        z-index: 2;
+        position: fixed;
+        top: 0px;
+        right: 0;
+        left: 0;
+      }
       &-container {
         display: flex;
         justify-content: space-between;
@@ -605,7 +614,7 @@
 @media screen and (max-width: 400px) {
   .header {
     &__burger {
-      top: 103px;
+      top: 104px;
       &-container {
         padding: 0 16px 32px;
       }

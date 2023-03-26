@@ -1,0 +1,29 @@
+@import '../../styles/scss/mixine-font';
+@import '../../styles/scss/variables';
+
+.start-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 60px 0 150px;
+  & a {
+    color: $colorYellow1;
+    border-bottom: 1px solid transparent;
+    transition: all ease 0.5s;
+    &:hover {
+      border-bottom: 1px solid $colorYellow1;
+    }
+  }
+  &-title {
+    @include font(18px, 600, 24px, $colorGrey1);
+    text-align: center;
+    margin: 0 0 20px;
+    cursor: default;
+  }
+  &-img {
+    background-image: url('../../styles/images/custom-development.png');
+    width: 230px;
+    height: 180px;
+    background-size: cover;
+  }
+}

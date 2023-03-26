@@ -397,9 +397,12 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p,
+span {
   font-size: inherit;
   font-weight: 400;
+  cursor: default;
 }
 
 .app {
@@ -415,4 +418,31 @@ h6 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  max-width: 1426px;
+  width: 100%;
+  padding: 14px 30px 45px;
+}
+
+@media screen and (max-width: 1440px) {
+  main {
+    padding: 14px 30px 45px;
+    position: relative;
+    max-width: 1200px;
+  }
+}
+@media screen and (max-width: 400px) {
+  main {
+    padding: 14px 15px 45px;
+  }
 }

@@ -1,0 +1,37 @@
+@import '../../styles/scss/mixine-font';
+@import '../../styles/scss/variables';
+
+.pagination {
+  margin: 58px 0 76px;
+  display: flex;
+  align-items: center;
+  &__btn {
+    background-color: transparent;
+    width: 9px;
+    height: 16px;
+    &_type {
+      &_left {
+        background-image: url('../../styles/images/pagination-arrow-left.svg');
+        margin: 0 35px 0 0;
+      }
+      &_right {
+        background-image: url('../../styles/images/pagination-arrow-right.svg');
+        margin: 0 0 0 35px;
+      }
+    }
+  }
+  &__digit {
+    @include font(14px, 500, 18px, $colorGrey1);
+    background: transparent;
+    width: 35px;
+    height: 35px;
+    &_active {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 198, 80, 0.3) 0%,
+        rgba(254, 202, 110, 0.3) 97.25%
+      );
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './_Header.scss';
 
 function Header() {
@@ -64,24 +63,24 @@ function Header() {
           <h2 className="header__menu-title">Меню&nbsp;сайта&#58;</h2>
           <ul className="header__menu-items">
             <li className="header__menu-item">
-              <Link href="#" target="_blank" className="header__menu-item-link">
+              <a href="/#" target="_blank" className="header__menu-item-link">
                 О&nbsp;компании
-              </Link>
+              </a>
             </li>
             <li className="header__menu-item">
-              <Link href="#" target="_blank" className="header__menu-item-link">
+              <a href="/#" target="_blank" className="header__menu-item-link">
                 Доставка и оплата
-              </Link>
+              </a>
             </li>
             <li className="header__menu-item">
-              <Link href="#" target="_blank" className="header__menu-item-link">
+              <a href="/#" target="_blank" className="header__menu-item-link">
                 Возврат
-              </Link>
+              </a>
             </li>
             <li className="header__menu-item">
-              <Link href="#" target="_blank" className="header__menu-item-link">
+              <a href="/#" target="_blank" className="header__menu-item-link">
                 Контакты
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>
@@ -89,9 +88,9 @@ function Header() {
 
       <div className="header__interaction">
         <div className="header__logo"></div>
-        <Link href="#" target="_blank" className="header__catalog">
+        <a href="/#" className="header__catalog">
           Каталог <div className="header__catalog-icon"></div>{' '}
-        </Link>
+        </a>
 
         <div className="header__search">
           <input
@@ -124,15 +123,15 @@ function Header() {
 
         <div className="header__priceList">
           {' '}
-          <Link href="#" target="_blank" className="header__priceList-btn">
+          <a href="/#" target="_blank" className="header__priceList-btn">
             Прайс-лист
             <div className="header__priceList-icon"></div>
-          </Link>
+          </a>
         </div>
         <div className="header__basket">
-          <Link className="header__basket-icon">
+          <a href="/#" target="_blank" className="header__basket-icon">
             <span className="header__basket-count">3</span>
-          </Link>
+          </a>
           <div className="header__basket-text">
             <p className="header__basket-title">Корзина</p>
             <p className="header__basket-price">12&nbsp;478&nbsp;&#8376;</p>
@@ -141,7 +140,10 @@ function Header() {
       </div>
 
       {/* 900px - ... Burger*/}
-      <div className="header__adaptive">
+      <div className={`header__adaptive ${
+          isBurgerMenuOpen && 'header__adaptive_open'
+        }`}>
+
         <div className="header__adaptive-container">
           <div
             className={`header__burger-icon ${
@@ -154,16 +156,16 @@ function Header() {
 
           <div className="header__logo"></div>
 
-          <Link className="header__basket-icon">
+          <a href="/#" target="_blank" className="header__basket-icon">
             <span className="header__basket-count">3</span>
-          </Link>
+          </a>
         </div>
 
         <div className="header__adaptive-container header__adaptive-content">
-          <Link href="#" target="_blank" className="header__catalog">
+          <a href="/#" className="header__catalog">
             <div className="header__catalog-icon"></div>
             Каталог
-          </Link>
+          </a>
           <div className="header__adaptive-line"></div>
           <div className="header__search">
             <button type="submit" className="header__search-btn"></button>
@@ -232,49 +234,49 @@ function Header() {
             <h2 className="header__menu-title">Меню&nbsp;сайта&#58;</h2>
             <ul className="header__menu-items">
               <li className="header__menu-item">
-                <Link
-                  href="#"
+                <a
+                  href="/#"
                   target="_blank"
                   className="header__menu-item-link"
                 >
                   О&nbsp;компании
-                </Link>
+                </a>
               </li>
               <li className="header__menu-item">
-                <Link
-                  href="#"
+                <a
+                  href="/#"
                   target="_blank"
                   className="header__menu-item-link"
                 >
                   Доставка и оплата
-                </Link>
+                </a>
               </li>
               <li className="header__menu-item">
-                <Link
-                  href="#"
+                <a
+                  href="/#"
                   target="_blank"
                   className="header__menu-item-link"
                 >
                   Возврат
-                </Link>
+                </a>
               </li>
               <li className="header__menu-item">
-                <Link
-                  href="#"
+                <a
+                  href="/#"
                   target="_blank"
                   className="header__menu-item-link"
                 >
                   Контакты
-                </Link>
+                </a>
               </li>
             </ul>
           </nav>
           <div className="header__priceList">
             {' '}
-            <Link href="#" target="_blank" className="header__priceList-btn">
+            <a href="/#" target="_blank" className="header__priceList-btn">
               Прайс-лист
               <div className="header__priceList-icon"></div>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -1,0 +1,383 @@
+@import '../../styles/scss/mixine-font';
+@import '../../styles/scss/variables';
+
+.catalog {
+  padding: 50px 0 0;
+  &__parametrs-container {
+    display: flex;
+    align-items: center;
+  }
+  &__showParams {
+    display: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 202, 101, 0.3);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin: 0 0 0 43px;
+    transition: all ease 0.5s;
+    &:hover {
+      background-color: rgba(255, 202, 101, 0.5);
+    }
+    &_type {
+      &_show {
+        background-image: url('../../styles/images/down-icon.svg');
+      }
+      &_hide {
+        background-image: url('../../styles/images/up-icon.svg');
+      }
+    }
+  }
+  &__goBack {
+    display: none;
+    background-image: url('../../styles/images/back-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 202, 101, 0.3);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin: 8px 0 25px;
+    transition: all ease 0.5s;
+    &:hover {
+      background-color: rgba(255, 202, 101, 0.5);
+    }
+    & span {
+      @include font(10px, 600, 12px, $colorGrey1);
+      text-transform: uppercase;
+      margin: 0 0 0 36px;
+    }
+  }
+  &__top {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 30px;
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 15px;
+    }
+    &-filters {
+      display: flex;
+      & li {
+        display: flex;
+        margin: 0 10px 10px 0;
+        padding: 18px 19px;
+        justify-content: center;
+        background-color: $colorWhite;
+        box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+        transition: all ease 0.5s;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+        }
+        &:last-child {
+          margin: 0 0 10px;
+        }
+      }
+    }
+    &-filter {
+      @include font(14px, 400, 17px, $colorGrey1);
+      max-width: 107px;
+      background-color: transparent;
+    }
+  }
+  &__title {
+    @include font(40px, 500, 48px, $colorBlack);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  &__sort {
+    align-self: center;
+    &_adaptive {
+      display: none;
+    }
+    & label {
+      @include font(16px, 500, 24px, $colorBlack);
+    }
+    &-title {
+      @include font(16px, 400, 24px, $colorGrey1);
+    }
+  }
+  &__select {
+    background-color: transparent;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+  }
+  &__main {
+    display: flex;
+    flex-direction: row;
+    &-container {
+      width: 25%;
+    }
+  }
+  &__filters {
+    &-title {
+      max-width: 215px;
+      width: 100%;
+      @include font(16px, 500, 24px, $colorBlack);
+      text-transform: uppercase;
+    }
+  }
+
+  &__priceFilter {
+    margin: 10px 0 30px;
+    &-lable {
+      @include font(14px, 300, 21px, $colorGrey1);
+      margin: 0 0 16px;
+      & span {
+        @include font(14px, 500, 21px, $colorBlack);
+      }
+    }
+    &-input {
+      width: 100px;
+      height: 23px;
+      padding: 0 20px;
+      text-align: center;
+      @include font(12px, 300, 15px, $colorGrey1);
+      background: linear-gradient(
+        90deg,
+        rgba(255, 198, 80, 0.3) 0%,
+        rgba(254, 202, 110, 0.3) 97.25%
+      );
+      border-radius: 1000px;
+    }
+  }
+
+  &__vendorFilter {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px;
+    &-lable {
+      @include font(16px, 500, 24px, $colorBlack);
+    }
+  }
+  &__filter-search {
+    margin: 15px 0 21px;
+    position: relative;
+    width: 238px;
+  }
+  &__search-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorGrey2;
+    width: 238px;
+    height: 59px;
+    border: 1px solid $colorGrey2;
+    border-radius: 36px;
+    padding: 0 60px 0 20px;
+    @include font(14px, 400, 18px, $colorGrey1);
+    transition: all ease 0.5s;
+    &:focus {
+      border: 1.5px solid $colorGrey1;
+    }
+    &::placeholder {
+      @include font(12px, 400, 18px, rgba(92, 99, 112, 0.6));
+    }
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
+  }
+  &__search-btn {
+    background-image: url('../../styles/images/search-icon.svg');
+    background-color: transparent;
+    width: 39px;
+    height: 39px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: 17%;
+    right: 5%;
+    transition: opacity ease 0.5s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__filter-checkbox {
+    & span {
+      &:first-of-type {
+        margin: 0 5px 0 10px;
+        @include font(14px, 400, 21px, $colorGrey1);
+      }
+      &:last-of-type {
+        @include font(10px, 400, 15px, $colorGrey1);
+      }
+    }
+  }
+  &__more-btn {
+    margin: 15px 0 10px;
+    width: 110px;
+  }
+  &__moreBtn {
+    background-color: transparent;
+    @include font(12px, 500, 18px, $colorGrey1);
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__filterBtns {
+    display: flex;
+    max-width: 238px;
+    padding: 20px 0 40px;
+    border-top: 1px dashed rgba(63, 78, 101, 0.3);
+  }
+  &__filterBtn {
+    &_type {
+      &_submit {
+        background-color: $colorYellow1;
+        width: 169px;
+        height: 59px;
+        border-radius: 79px;
+        @include font(14px, 700, 17px, $colorWhite);
+        margin: 0 10px 0 0;
+        transition: opacity ease 0.5s;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      &_reset {
+        background-image: url('../../styles/images/filter-reset-icon.svg');
+        background-color: transparent;
+        width: 59px;
+        height: 59px;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity ease 0.5s;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  &__category-items {
+    max-width: 238px;
+    width: 100%;
+    margin: 0 0 25px;
+    & li {
+      margin: 0 0 10px;
+    }
+  }
+  &__category-item {
+    @include font(14px, 500, 24px, $colorBlack);
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+    transition: all ease 0.5s;
+    &:hover {
+      @include font(14px, 500, 24px, $colorGrey1);
+      border-bottom: 1px solid $colorGrey1;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .catalog {
+    &__title {
+      @include font(36px, 500, 48px, $colorBlack);
+    }
+    &__top {
+      &-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .catalog {
+    &__main {
+      &-container {
+        width: 35%;
+      }
+    }
+    &__title {
+      @include font(28px, 500, 34px, $colorBlack);
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .catalog {
+    padding: 0;
+    &__showParams {
+      display: block;
+      &_hidden {
+        display: none;
+      }
+    }
+    &__goBack {
+      display: block;
+    }
+    &__main {
+      flex-direction: column;
+      align-items: center;
+      &-container {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    &__top-container {
+      justify-content: center;
+    }
+    &__title {
+      @include font(20px, 500, 24px, $colorBlack);
+    }
+    &__sort {
+      display: none;
+      &_adaptive {
+        display: flex;
+      }
+    }
+    &__top-filters {
+      display: none;
+    }
+    &__filter-search {
+      width: 290px;
+    }
+    &__search-input {
+      width: 290px;
+    }
+    &__filterBtns {
+      max-width: 294px;
+    }
+    &__filterBtn {
+      &_type {
+        &_submit {
+          width: 216px;
+        }
+      }
+    }
+    &__priceFilter {
+      display: none;
+    }
+    &__vendorFilter {
+      display: none;
+    }
+    &__filterBtns {
+      display: none;
+    }
+    &__category-items {
+      margin: 20px 0 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .catalog {
+    &__main {
+      &-container {
+        width: 100%;
+      }
+    }
+  }
+}

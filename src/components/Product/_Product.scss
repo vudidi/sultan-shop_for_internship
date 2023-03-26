@@ -1,0 +1,114 @@
+@import '../../styles/scss/mixine-font';
+@import '../../styles/scss/variables';
+
+.product {
+  max-width: 326px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 22px;
+  margin: 0 0 20px;
+  box-shadow: 0px 14px 39px -11px rgba(0, 0, 0, 0.06);
+  // border: 1px solid red;
+  border-radius: 10px;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  }
+  &__image {
+    width: 202px;
+    height: 218px;
+    object-fit: contain;
+    align-self: center;
+  }
+  &__volume {
+    display: flex;
+    cursor: pointer;
+    & span {
+      cursor: pointer;
+    }
+    &-icon {
+      background-image: url('../../styles/images/product/product-type-icon.svg');
+      width: 15px;
+      height: 15px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.5;
+      display: block;
+      margin: 0 5px 0 0;
+    }
+    &-value {
+      @include font(12px, 400, 15px, $colorGrey1);
+    }
+  }
+  &__title {
+    margin: 10px 0 20px;
+    &-vendor {
+      @include font(16px, 700, 21px, $colorBlack);
+      cursor: pointer;
+    }
+    &-name {
+      @include font(16px, 500, 21px, $colorBlack);
+      cursor: pointer;
+    }
+  }
+  &__barcode {
+    @include font(14px, 500, 21px, $colorBlack);
+    cursor: pointer;
+    & span {
+      @include font(14px, 300, 21px, $colorGrey1);
+      cursor: pointer;
+    }
+  }
+  &__vendor {
+    @include font(14px, 500, 21px, $colorBlack);
+    cursor: pointer;
+    & span {
+      @include font(14px, 300, 21px, $colorGrey1);
+      cursor: pointer;
+    }
+  }
+  &__brand {
+    margin: 0 0 15px;
+    @include font(14px, 500, 21px, $colorBlack);
+    cursor: pointer;
+    & span {
+      @include font(14px, 300, 21px, $colorGrey1);
+      cursor: pointer;
+    }
+  }
+  &__price {
+    @include font(16px, 800, 21px, $colorBlack);
+    cursor: pointer;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorYellow1;
+    width: 153px;
+    height: 45px;
+    border-radius: 80px;
+    @include font(10px, 700, 12px, $colorWhite);
+    text-transform: uppercase;
+    transition: opacity ease 0.5s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__price-icon {
+    background-image: url('../../styles/images/product/btn-basket-icon.svg');
+    width: 24px;
+    height: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 0 0 8px;
+  }
+}

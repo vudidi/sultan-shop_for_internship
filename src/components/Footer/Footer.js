@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './_Footer.scss';
 
 function Footer() {
@@ -10,14 +9,14 @@ function Footer() {
           <div className="footer__logo-container">
             {' '}
             <div className="footer__logo"></div>
-            <Link
-              href="#"
+            <a
+              href="/#"
               target="_blank"
               className="footer__priceList-btn footer__priceList-btn_adaptive"
             >
               Прайс-лист
               <div className="footer__priceList-icon"></div>
-            </Link>
+            </a>
           </div>
           <p className="footer__description">
             Компания &laquo;Султан&raquo; &mdash; снабжаем розничные магазины
@@ -43,40 +42,24 @@ function Footer() {
             <h2 className="footer__menu-title">Меню&nbsp;сайта&#58;</h2>
             <ul className="footer__menu-items">
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   О&nbsp;компании
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Доставка и оплата
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Возврат
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Контакты
-                </Link>
+                </a>
               </li>
             </ul>
           </nav>
@@ -84,49 +67,29 @@ function Footer() {
             <h2 className="footer__menu-title">Категории&#58;</h2>
             <ul className="footer__menu-items">
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Бытовая&nbsp;химия
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Косметика&nbsp;и&nbsp;гигиена
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Товары&nbsp;для&nbsp;дома
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Товары&nbsp;для&nbsp;детей&nbsp;и&nbsp;мам
-                </Link>
+                </a>
               </li>
               <li className="footer__menu-item">
-                <Link
-                  href="#"
-                  target="_blank"
-                  className="footer__menu-item-link"
-                >
+                <a href="/#" target="_blank" className="footer__menu-item-link">
                   Посуда
-                </Link>
+                </a>
               </li>
             </ul>
           </nav>
@@ -138,14 +101,14 @@ function Footer() {
               <h2 className="footer__menu-title footer__priceList-title">
                 Скачать прайс-лист&#58;
               </h2>
-              <Link
-                href="#"
+              <a
+                href="/#"
                 target="_blank"
                 className="footer__priceList-btn footer__priceList-btn_desktop"
               >
                 Прайс-лист
                 <div className="footer__priceList-icon"></div>
-              </Link>
+              </a>
             </div>
 
             <div className="footer__messengers">
@@ -154,18 +117,22 @@ function Footer() {
               </p>
               <ul className="footer__messengers-items">
                 <li className="footer__messengers-item footer__messengers-item_type_whatsup">
-                  <Link
-                    href="#"
+                  <a
+                    href="/#"
                     target="_blank"
                     className="footer__messengers-link"
-                  ></Link>
+                  >
+                    {' '}
+                  </a>
                 </li>
                 <li className="footer__messengers-item footer__messengers-item_type_tlgm">
-                  <Link
-                    href="#"
+                  <a
+                    href="/#"
                     target="_blank"
                     className="footer__messengers-link"
-                  ></Link>
+                  >
+                    {' '}
+                  </a>
                 </li>
               </ul>
             </div>
