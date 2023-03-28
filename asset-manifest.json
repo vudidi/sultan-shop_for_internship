@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sultan-shop_for_internship/static/css/main.8e182427.css",
-    "main.js": "/sultan-shop_for_internship/static/js/main.fc85fbda.js",
+    "main.css": "/sultan-shop_for_internship/static/css/main.e54d3f28.css",
+    "main.js": "/sultan-shop_for_internship/static/js/main.8c6bada8.js",
     "static/js/787.93d58c4f.chunk.js": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js",
     "static/media/test-large-image22.png": "/sultan-shop_for_internship/static/media/test-large-image22.2527e768603bd08847b9.png",
     "static/media/custom-development.png": "/sultan-shop_for_internship/static/media/custom-development.aa04df25c846e419cd54.png",
@@ -14,6 +14,7 @@
     "static/media/basket-icon.svg": "/sultan-shop_for_internship/static/media/basket-icon.7e3f10a67cbf7efab906.svg",
     "static/media/filter-reset-icon.svg": "/sultan-shop_for_internship/static/media/filter-reset-icon.9a8622158eebb6cebb7a.svg",
     "static/media/visa-icon.svg": "/sultan-shop_for_internship/static/media/visa-icon.28b044c9939fe03df7cd.svg",
+    "static/media/share-icon.svg": "/sultan-shop_for_internship/static/media/share-icon.5201f4defbefb503f0cd.svg",
     "static/media/mail-icon.svg": "/sultan-shop_for_internship/static/media/mail-icon.5018676c2b55308960ea.svg",
     "static/media/callback-icon-yellow.svg": "/sultan-shop_for_internship/static/media/callback-icon-yellow.c49392ca5fdeac4295c8.svg",
     "static/media/telegram-icon.svg": "/sultan-shop_for_internship/static/media/telegram-icon.92663465a62d63b80d36.svg",
@@ -27,6 +28,7 @@
     "index.html": "/sultan-shop_for_internship/index.html",
     "static/media/burger-icon-open.svg": "/sultan-shop_for_internship/static/media/burger-icon-open.ac657e28a94f21799552.svg",
     "static/media/burger-icon-close.svg": "/sultan-shop_for_internship/static/media/burger-icon-close.dfa58e2021799258d971.svg",
+    "static/media/priceArrow-icon-dark.svg": "/sultan-shop_for_internship/static/media/priceArrow-icon-dark.d1918e2edecc488a113b.svg",
     "static/media/priceArrow-icon.svg": "/sultan-shop_for_internship/static/media/priceArrow-icon.a8c9e58787aa8d57aac5.svg",
     "static/media/mail-arrow-icon.svg": "/sultan-shop_for_internship/static/media/mail-arrow-icon.dc272fb00c0a6f28eaaf.svg",
     "static/media/pagination-arrow-left.svg": "/sultan-shop_for_internship/static/media/pagination-arrow-left.8009929457bde0328f8f.svg",
@@ -34,12 +36,12 @@
     "static/media/back-icon.svg": "/sultan-shop_for_internship/static/media/back-icon.5a3ebbf524233ddda3e3.svg",
     "static/media/down-icon.svg": "/sultan-shop_for_internship/static/media/down-icon.90a0847e2609fe35eb18.svg",
     "static/media/up-icon.svg": "/sultan-shop_for_internship/static/media/up-icon.80566af4e2a61f1f1d7b.svg",
-    "main.8e182427.css.map": "/sultan-shop_for_internship/static/css/main.8e182427.css.map",
-    "main.fc85fbda.js.map": "/sultan-shop_for_internship/static/js/main.fc85fbda.js.map",
+    "main.e54d3f28.css.map": "/sultan-shop_for_internship/static/css/main.e54d3f28.css.map",
+    "main.8c6bada8.js.map": "/sultan-shop_for_internship/static/js/main.8c6bada8.js.map",
     "787.93d58c4f.chunk.js.map": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e182427.css",
-    "static/js/main.fc85fbda.js"
+    "static/css/main.e54d3f28.css",
+    "static/js/main.8c6bada8.js"
   ]
 }
