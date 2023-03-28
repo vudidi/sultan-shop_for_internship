@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sultan-shop_for_internship/static/css/main.e54d3f28.css",
-    "main.js": "/sultan-shop_for_internship/static/js/main.8c6bada8.js",
+    "main.css": "/sultan-shop_for_internship/static/css/main.454a7f6d.css",
+    "main.js": "/sultan-shop_for_internship/static/js/main.a8b09a46.js",
     "static/js/787.93d58c4f.chunk.js": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js",
     "static/media/test-large-image22.png": "/sultan-shop_for_internship/static/media/test-large-image22.2527e768603bd08847b9.png",
     "static/media/custom-development.png": "/sultan-shop_for_internship/static/media/custom-development.aa04df25c846e419cd54.png",
@@ -36,12 +36,12 @@
     "static/media/back-icon.svg": "/sultan-shop_for_internship/static/media/back-icon.5a3ebbf524233ddda3e3.svg",
     "static/media/down-icon.svg": "/sultan-shop_for_internship/static/media/down-icon.90a0847e2609fe35eb18.svg",
     "static/media/up-icon.svg": "/sultan-shop_for_internship/static/media/up-icon.80566af4e2a61f1f1d7b.svg",
-    "main.e54d3f28.css.map": "/sultan-shop_for_internship/static/css/main.e54d3f28.css.map",
-    "main.8c6bada8.js.map": "/sultan-shop_for_internship/static/js/main.8c6bada8.js.map",
+    "main.454a7f6d.css.map": "/sultan-shop_for_internship/static/css/main.454a7f6d.css.map",
+    "main.a8b09a46.js.map": "/sultan-shop_for_internship/static/js/main.a8b09a46.js.map",
     "787.93d58c4f.chunk.js.map": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e54d3f28.css",
-    "static/js/main.8c6bada8.js"
+    "static/css/main.454a7f6d.css",
+    "static/js/main.a8b09a46.js"
   ]
 }
