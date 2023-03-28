@@ -13,6 +13,15 @@ const Breadcrumbs = (props) => {
     location: { pathname },
   } = props;
 
+  function breadcrumbTitle() {
+    console.log(pathname);
+    if (pathname.includes('product')) {
+      return 'Товар';
+    } else if (pathname.includes('cart')) {
+      return 'Корзина';
+    }
+  }
+
   const pathnames = pathname.split('/').filter((x) => x);
 
   return (
@@ -35,7 +44,7 @@ const Breadcrumbs = (props) => {
           const isLast = index === pathnames.length - 1;
           return isLast ? (
             <Typography className="breadcrumbs-next" key={name}>
-              {name}
+              {breadcrumbTitle()}
             </Typography>
           ) : (
             <Link key={name} onClick={() => history.push(routeTo)}>

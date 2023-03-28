@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './_Header.scss';
 
 function Header() {
@@ -129,9 +130,9 @@ function Header() {
           </a>
         </div>
         <div className="header__basket">
-          <a href="/#" target="_blank" className="header__basket-icon">
+          <Link to="/cart" className="header__basket-icon">
             <span className="header__basket-count">3</span>
-          </a>
+          </Link>
           <div className="header__basket-text">
             <p className="header__basket-title">Корзина</p>
             <p className="header__basket-price">12&nbsp;478&nbsp;&#8376;</p>
@@ -156,9 +157,9 @@ function Header() {
 
           <div className="header__logo"></div>
 
-          <a href="/#" target="_blank" className="header__basket-icon">
+          <Link to="/cart" className="header__basket-icon">
             <span className="header__basket-count">3</span>
-          </a>
+          </Link>
         </div>
 
         <div className="header__adaptive-container header__adaptive-content">

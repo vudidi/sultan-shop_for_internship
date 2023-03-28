@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import Catalog from '../Catalog/Catalog';
 import ProductCard from '../ProductCard/ProductCard';
 import StartPage from '../StartPage/StartPage';
+import Cart from '../Cart/Cart';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             from="/product"
             render={(props) => <ProductCard {...props} />}
           />
+          <Route exact from="/cart" render={(props) => <Cart {...props} />} />
 
           <Route path="/sultan-shop_for_internship">
             <StartPage />

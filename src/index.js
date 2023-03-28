@@ -12,15 +12,4 @@ createRoot(document.getElementById('root')).render(
   </BrowserRouter>
 );
 
-console.log(document.getElementById('root'));
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <BrowserRouter>
-//     <React.StrictMode>
-//       <App />
-//     </React.StrictMode>
-//   </BrowserRouter>
-// );
-
 reportWebVitals();
