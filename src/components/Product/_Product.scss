@@ -9,7 +9,6 @@
   padding: 30px 22px;
   margin: 0 0 20px;
   box-shadow: 0px 14px 39px -11px rgba(0, 0, 0, 0.06);
-  // border: 1px solid red;
   border-radius: 10px;
   transition: all ease 0.5s;
   cursor: pointer;
@@ -54,24 +53,7 @@
       cursor: pointer;
     }
   }
-  &__barcode {
-    @include font(14px, 500, 21px, $colorBlack);
-    cursor: pointer;
-    & span {
-      @include font(14px, 300, 21px, $colorGrey1);
-      cursor: pointer;
-    }
-  }
-  &__vendor {
-    @include font(14px, 500, 21px, $colorBlack);
-    cursor: pointer;
-    & span {
-      @include font(14px, 300, 21px, $colorGrey1);
-      cursor: pointer;
-    }
-  }
-  &__brand {
-    margin: 0 0 15px;
+  &__parameter {
     @include font(14px, 500, 21px, $colorBlack);
     cursor: pointer;
     & span {

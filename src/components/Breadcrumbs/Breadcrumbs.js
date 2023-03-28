@@ -23,7 +23,7 @@ const Breadcrumbs = (props) => {
       >
         {pathnames.length > 0 ? (
           <Link onClick={() => history.push('/')}>
-            <p className="breadcrumbs">Каталог</p>
+            <p className="breadcrumbs breadcrumbs_active">Каталог</p>
           </Link>
         ) : (
           <Typography className="breadcrumbs">

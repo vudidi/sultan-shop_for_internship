@@ -20,14 +20,15 @@ function App() {
 
         <Switch>
           <Route exact from="/" render={(props) => <Catalog {...props} />} />
+          <Route
+            exact
+            from="/product"
+            render={(props) => <ProductCard {...props} />}
+          />
+
           <Route path="/sultan-shop_for_internship">
             <StartPage />
           </Route>
-          <Route
-            exact
-            path="/product"
-            render={(props) => <ProductCard {...props} />}
-          ></Route>
         </Switch>
       </main>
       <Footer />

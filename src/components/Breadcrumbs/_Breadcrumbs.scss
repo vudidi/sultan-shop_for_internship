@@ -15,6 +15,9 @@
     padding: 0 0 0 10px;
     border-left: 1px dashed rgba(63, 78, 101, 0.3);
   }
+  &_active {
+    cursor: pointer;
+  }
 }
 
 .breadcrumbsCustomStyle li:nth-child(2) {

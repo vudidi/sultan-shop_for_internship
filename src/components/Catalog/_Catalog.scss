@@ -211,6 +211,9 @@
   &__more-btn {
     margin: 15px 0 10px;
     width: 110px;
+    &_hidden {
+      display: none;
+    }
   }
   &__moreBtn {
     background-color: transparent;
@@ -315,6 +318,7 @@
     }
     &__goBack {
       display: block;
+      align-self: flex-start;
     }
     &__main {
       flex-direction: column;

@@ -1,2 +1,268 @@
 @import '../../styles/scss/mixine-font';
 @import '../../styles/scss/variables';
+
+.product-card {
+  padding: 65px 0 60px;
+  display: flex;
+  flex-direction: row;
+  &__image {
+    width: 664px;
+    height: 471px;
+    object-fit: contain;
+    margin: 0 40px 0 0;
+  }
+
+  &__info {
+    max-width: 620px;
+    width: 100%;
+    margin: 30px 0 0;
+  }
+  &__volume {
+    margin: 0 0 20px;
+    & div,
+    span {
+      cursor: default;
+    }
+  }
+  &__parameter {
+    cursor: default;
+    & span {
+      cursor: default;
+    }
+  }
+  &__availability {
+    @include font(14px, 500, 18px, $colorGreen);
+  }
+  &__title {
+    margin: 10px 0;
+    &-vendor {
+      @include font(30px, 800, 45px, $colorBlack);
+    }
+    &-name {
+      @include font(30px, 500, 45px, $colorBlack);
+    }
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+  }
+  &__container-adaptive {
+    display: none;
+  }
+  &__price {
+    @include font(30px, 800, 39px, $colorBlack);
+  }
+  &__cart-action {
+    margin: 0 40px;
+  }
+  &__cart-button {
+    width: 34px;
+    height: 23px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 198, 80, 0.3) 0%,
+      rgba(254, 202, 110, 0.3) 97.25%
+    );
+    border-radius: 1000px;
+    transition: all ease 0.5s;
+    &:hover {
+      background-color: rgba(255, 202, 101, 0.5);
+    }
+  }
+  &__cart-count {
+    @include font(14px, 500, 18px, $colorGrey1);
+  }
+  &__button {
+    width: 184px;
+    height: 59px;
+    @include font(14px, 700, 17px, $colorWhite);
+  }
+  &__share {
+    background-image: url('../../styles/images/product/share-icon.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $colorWhite;
+    padding: 35px;
+    box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    transition: all ease 0.5s;
+    &:hover {
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    }
+  }
+  &__delivery-terms {
+    max-width: 316px;
+    width: 100%;
+    text-align: center;
+    padding: 20.5px 35.5px;
+    margin: 0 10px;
+    @include font(12px, 400, 18px, $colorGrey1);
+    box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    & span {
+      @include font(12px, 700, 18px, $colorGrey1);
+    }
+  }
+  &__priceList {
+    background-image: url('../../styles/images/product/priceArrow-icon-dark.svg');
+    background-size: 14px;
+    background-position: 90%;
+    background-repeat: no-repeat;
+    width: 186px;
+    height: 77px;
+    background-color: $colorWhite;
+    @include font(14px, 700, 17px, $colorGrey1);
+    box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    transition: all ease 0.5s;
+    &:hover {
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    }
+  }
+
+  &__description {
+    max-width: 610px;
+    width: 100%;
+    &-text {
+      margin: 0 0 20px;
+      @include font(12px, 300, 18px, $colorGrey1);
+      &_hidden {
+        display: none;
+      }
+    }
+  }
+  &__descriptionBtn {
+    margin: 30px 0 15px;
+    background-color: transparent;
+    @include font(16px, 500, 24px, $colorBlack);
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__parameter-container {
+    &_hidden {
+      display: none;
+    }
+  }
+  &__parameter {
+    margin: 0 0 5px;
+  }
+  &__parametersBtn {
+    padding: 20px 0 15px;
+    border-top: 1px dashed rgba(63, 78, 101, 0.3);
+    background-color: transparent;
+    @include font(16px, 500, 24px, $colorBlack);
+    &_hidden {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .product-card {
+    &__image {
+      width: 464px;
+      height: 271px;
+    }
+    &__title {
+      &-vendor {
+        @include font(26px, 800, 34px, $colorBlack);
+      }
+      &-name {
+        @include font(26px, 500, 34px, $colorBlack);
+      }
+    }
+    &__container {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .product-card {
+    padding: 35px 0 50px;
+    &__image {
+      width: 356px;
+      height: 279px;
+    }
+    &__title {
+      &-vendor {
+        @include font(20px, 800, 30px, $colorBlack);
+      }
+      &-name {
+        @include font(20px, 500, 30px, $colorBlack);
+      }
+    }
+    &__container {
+      display: none;
+    }
+    &__container-adaptive {
+      display: flex;
+      margin: 0 0 20px;
+      &_column {
+        flex-direction: column;
+      }
+    }
+    &__price {
+      @include font(24px, 800, 30px, $colorBlack);
+    }
+    &__cart-action {
+      margin: 0 0 0 27px;
+    }
+    &__share {
+      padding: 30px;
+      margin: 0 0 0 20px;
+    }
+    &__delivery-terms {
+      max-width: 290px;
+      margin: 0 0 10px;
+    }
+    &__priceList {
+      width: 290px;
+      height: 77px;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .product-card {
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    &__image {
+      margin: 0;
+    }
+    &__info {
+      margin: 0;
+    }
+    &__volume {
+      display: none;
+    }
+    &__title {
+      margin: 10px 0 20px;
+    }
+    &__price {
+      @include font(20px, 800, 26px, $colorBlack);
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .product-card {
+    &__image {
+      width: 256px;
+      height: 179px;
+    }
+    &__title {
+      &-vendor {
+        @include font(16px, 800, 24px, $colorBlack);
+      }
+      &-name {
+        @include font(16px, 500, 24px, $colorBlack);
+      }
+    }
+  }
+}

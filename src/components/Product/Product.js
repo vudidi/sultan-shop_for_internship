@@ -31,16 +31,15 @@ function Product() {
           </span>
         </h3>
       </div>
-      <div className="product__barcode">
+      <div className="product__barcode product__parameter">
         <span>Штрихкод&#58;&#160;</span>4604049097548
       </div>
-      <div className="product__vendor">
+      <div className="product__vendor product__parameter">
         <span>Производитель&#58;&#160;</span>Нэфис
       </div>
-      <div className="product__brand">
+      <div className="product__brand product__parameter">
         <span>Бренд&#58;&#160;</span>AOS
       </div>
-
       <div className="product__container">
         <p className="product__price">48,76 &#8376;</p>
         <button onClick={navigateTo} className="product__button">

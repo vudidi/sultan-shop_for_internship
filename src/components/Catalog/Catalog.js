@@ -33,8 +33,6 @@ function Catalog() {
 
   const width = useWindowWidth();
 
-  console.log(width);
-
   const [checkboxItems, setCheckboxItems] = React.useState([]);
   const [visible, setVisible] = React.useState(4);
 
@@ -52,7 +50,12 @@ function Catalog() {
   const vendorFilter = document.querySelector('.catalog__vendorFilter');
   const filterBtns = document.querySelector('.catalog__filterBtns');
 
-  if (width > 780) {
+  if (
+    priceFilter !== null &&
+    vendorFilter !== null &&
+    filterBtns !== null &&
+    width > 780
+  ) {
     priceFilter.style.display = 'block';
     vendorFilter.style.display = 'flex';
     filterBtns.style.display = 'flex';
@@ -251,7 +254,11 @@ function Catalog() {
                 );
               })}
 
-              <div className="catalog__more-btn">
+              <div
+                className={`catalog__more-btn ${
+                  checkboxItems.length < 5 && 'catalog__more-btn_hidden'
+                }`}
+              >
                 <button
                   onClick={showMoreCheckbox}
                   className="catalog__moreBtn catalog__moreBtn_type_show"
