@@ -14,15 +14,21 @@ const Breadcrumbs = (props) => {
   } = props;
 
   function breadcrumbTitle() {
-    console.log(pathname);
     if (pathname.includes('product')) {
-      return 'Товар';
+      return props.productTitle;
     } else if (pathname.includes('cart')) {
       return 'Корзина';
     }
   }
 
-  const pathnames = pathname.split('/').filter((x) => x);
+  function getPathnames() {
+    if (!pathname.includes('product')) {
+      return pathname.split('/').filter((x) => x);
+    } else {
+      return [pathname];
+    }
+  }
+  const pathnames = getPathnames();
 
   return (
     !pathname.includes('sultan-shop_for_internship') && (
@@ -48,7 +54,7 @@ const Breadcrumbs = (props) => {
             </Typography>
           ) : (
             <Link key={name} onClick={() => history.push(routeTo)}>
-              {name}
+              {breadcrumbTitle()}
             </Link>
           );
         })}

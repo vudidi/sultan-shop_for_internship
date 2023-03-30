@@ -28,7 +28,6 @@
       cursor: pointer;
     }
     &-icon {
-      background-image: url('../../styles/images/product/product-type-icon.svg');
       width: 15px;
       height: 15px;
       background-position: center;
@@ -37,6 +36,14 @@
       opacity: 0.5;
       display: block;
       margin: 0 5px 0 0;
+      &_type {
+        &_weight {
+          background-image: url('../../styles/images/product/product-type-icon-weight.svg');
+        }
+        &_volume {
+          background-image: url('../../styles/images/product/product-type-icon-volume.svg');
+        }
+      }
     }
     &-value {
       @include font(12px, 400, 15px, $colorGrey1);
@@ -44,6 +51,15 @@
   }
   &__title {
     margin: 10px 0 20px;
+    width: 250px;
+    display: block;
+    display: -webkit-box;
+    height: 63px;
+    line-height: 21px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &-vendor {
       @include font(16px, 700, 21px, $colorBlack);
       cursor: pointer;
@@ -69,6 +85,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 10px 0 0;
+    height: 45px;
   }
   &__button {
     display: flex;
@@ -83,6 +101,15 @@
     transition: opacity ease 0.5s;
     &:hover {
       opacity: 0.8;
+    }
+    &_hidden {
+      display: none;
+    }
+    &:disabled {
+      cursor: default;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
   &__price-icon {

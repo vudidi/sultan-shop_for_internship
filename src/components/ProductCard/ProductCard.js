@@ -1,15 +1,44 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import './_ProductCard.scss';
-import testImageLarge21 from '../../styles/images/product/test-large-image22.png';
+import checkTheBasket from '../../utils/checkTheBasket';
+const productData = require('../../data/products.json');
 
-function ProductCard() {
-  const history = useHistory();
+function ProductCard(props) {
+  const products = productData.products;
+  console.log(props.barcode);
+  let currentProduct = products.filter(
+    (item) => item.barcode === props.barcode
+  )[0];
 
-  const navigateTo = (e) => {
+  const localCart = JSON.parse(localStorage.getItem('cart'));
+  let countInCart = 0;
+
+  if (localCart) {
+    const productCartCount = localCart.find(
+      (el) => el.barcode === currentProduct.barcode
+    );
+    if (productCartCount) {
+      countInCart = productCartCount.count;
+    }
+  }
+
+  function handleAddProduct(e) {
     e.preventDefault();
-    history.push('/');
-  };
+    props.onAddProductToCart(currentProduct);
+    countInCart++;
+  }
+
+  function handleCartInc(e) {
+    e.preventDefault();
+    props.onCartInc(currentProduct);
+    countInCart++;
+  }
+
+  function handleCartDec(e) {
+    e.preventDefault();
+    props.onCartDec(currentProduct);
+    countInCart--;
+  }
 
   function toggleDescription() {
     document
@@ -41,7 +70,7 @@ function ProductCard() {
         <span>Назад</span>
       </button>{' '}
       <img
-        src={testImageLarge21}
+        src={currentProduct.url}
         alt="AOS средство для мытья посуды Crystal"
         className="product-card__image"
       />
@@ -50,32 +79,42 @@ function ProductCard() {
 
         <div className="product-card__title">
           <h3 className="product-card__title-vendor">
-            BioMio&nbsp;BIO-SOAP&nbsp;
+            {currentProduct.brand}&nbsp;
             <span className="product-card__title-name">
-              Экологичное туалетное мыло. Литсея и бергамот
+              {currentProduct.title}
             </span>
           </h3>
         </div>
 
         <div className="product__volume product-card__volume">
-          <div className="product__volume-icon"></div>
-          <span className="product__volume-value">450 мл</span>
+          <div
+            className={`product__volume-icon ${
+              currentProduct.unit === 'weight'
+                ? 'product__volume-icon_type_weight'
+                : 'product__volume-icon_type_volume'
+            }`}
+          ></div>
+          <span className="product__volume-value">{currentProduct.size}</span>
         </div>
 
         <div className="product-card__container">
-          <p className="product-card__price">48,76 &#8376;</p>
+          <p className="product-card__price">{currentProduct.price} &#8376;</p>
 
           <div className="product-card__cart-action">
             <button
+              disabled={countInCart < 1}
+              onClick={handleCartDec}
               type="button"
               className="product-card__cart-inc product-card__cart-button"
             >
               &#8722;
             </button>
             &#160;&#160;&#160;
-            <span className="product-card__cart-count">1</span>
+            <span className="product-card__cart-count">{countInCart}</span>
             &#160;&#160;&#160;
             <button
+              disabled={countInCart > 20}
+              onClick={handleCartInc}
               type="button"
               className="product-card__cart-dec product-card__cart-button"
             >
@@ -84,7 +123,8 @@ function ProductCard() {
           </div>
 
           <button
-            onClick={navigateTo}
+            disabled={countInCart > 0}
+            onClick={handleAddProduct}
             className="product__button product-card__button"
           >
             В корзину
@@ -107,18 +147,22 @@ function ProductCard() {
 
         <div className="product-card__container-adaptive">
           {' '}
-          <p className="product-card__price">48,76 &#8376;</p>
+          <p className="product-card__price">{currentProduct.price} &#8376;</p>
           <div className="product-card__cart-action">
             <button
+              disabled={countInCart < 1}
+              onClick={handleCartDec}
               type="button"
               className="product-card__cart-inc product-card__cart-button"
             >
               &#8722;
             </button>
             &#160;&#160;&#160;
-            <span className="product-card__cart-count">1</span>
+            <span className="product-card__cart-count">{countInCart}</span>
             &#160;&#160;&#160;
             <button
+              disabled={countInCart > 20}
+              onClick={handleCartInc}
               type="button"
               className="product-card__cart-dec product-card__cart-button"
             >
@@ -129,7 +173,8 @@ function ProductCard() {
 
         <div className="product-card__container-adaptive">
           <button
-            onClick={navigateTo}
+            disabled={countInCart > 0}
+            onClick={handleAddProduct}
             className="product__button product-card__button"
           >
             В корзину
@@ -152,11 +197,13 @@ function ProductCard() {
         </div>
 
         <div className="product__vendor product__parameter product-card__parameter">
-          <span>Производитель&#58;&#160;</span>Нэфис
+          <span>Производитель&#58;&#160;</span>
+          {currentProduct.vendor}
         </div>
 
         <div className="product__brand product__parameter product-card__parameter">
-          <span>Бренд&#58;&#160;</span>AOS
+          <span>Бренд&#58;&#160;</span>
+          {currentProduct.brand}
         </div>
 
         <div className="product__article product__parameter product-card__parameter">
@@ -164,7 +211,8 @@ function ProductCard() {
         </div>
 
         <div className="product__barcode product__parameter product-card__parameter">
-          <span>Штрихкод&#58;&#160;</span>4604049097548
+          <span>Штрихкод&#58;&#160;</span>
+          {currentProduct.barcode}
         </div>
 
         <div className="product-card__description">
@@ -181,12 +229,7 @@ function ProductCard() {
             Описание &#9650;
           </button>
           <p className="product-card__description-text product-card__description-text_hidden">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis
-            vulputate feugiat massa vestibulum duis. Faucibus consectetur
-            aliquet sed pellentesque consequat consectetur congue mauris
-            venenatis. Nunc elit, dignissim sed nulla ullamcorper enim,
-            malesuada.
+            {currentProduct.description}
           </p>
         </div>
 
@@ -206,19 +249,21 @@ function ProductCard() {
 
           <div className="product-card__parameter-container product-card__parameter-container_hidden">
             <div className="product__vendor product__parameter product-card__parameter">
-              <span>Назначение&#58;&#160;</span>BioMio
+              <span>Назначение&#58;&#160;</span>Косметика
             </div>
 
             <div className="product__vendor product__parameter product-card__parameter">
-              <span>Тип&#58;&#160;</span>BioMio
+              <span>Тип&#58;&#160;</span>Косметика
             </div>
 
             <div className="product__vendor product__parameter product-card__parameter">
-              <span>Производитель&#58;&#160;</span>Нэфис
+              <span>Производитель&#58;&#160;</span>
+              {currentProduct.vendor}
             </div>
 
             <div className="product__brand product__parameter product-card__parameter">
-              <span>Бренд&#58;&#160;</span>AOS
+              <span>Бренд&#58;&#160;</span>
+              {currentProduct.brand}
             </div>
 
             <div className="product__article product__parameter product-card__parameter">
@@ -226,19 +271,22 @@ function ProductCard() {
             </div>
 
             <div className="product__barcode product__parameter product-card__parameter">
-              <span>Штрихкод&#58;&#160;</span>4604049097548
+              <span>Штрихкод&#58;&#160;</span>
+              {currentProduct.barcode}
             </div>
 
             <div className="product__weight product__parameter product-card__parameter">
-              <span>Вес&#58;&#160;</span>90 г
+              <span>Вес&#58;&#160;</span>
+              {currentProduct.size}
             </div>
 
             <div className="product__amount product__parameter product-card__parameter">
-              <span>Объем&#58;&#160;</span>90 г
+              <span>Объем&#58;&#160;</span>
+              {currentProduct.size}
             </div>
 
             <div className="product__count-in-box product__parameter product-card__parameter">
-              <span>Кол-во в коробке&#58;&#160;</span>90 г
+              <span>Кол-во в коробке&#58;&#160;</span>1
             </div>
           </div>
         </div>

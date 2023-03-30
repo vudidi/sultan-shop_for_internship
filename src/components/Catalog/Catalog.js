@@ -3,7 +3,7 @@ import './_Catalog.scss';
 import Products from '../Products/Products';
 import useWindowWidth from '../../utils/getWindowWidth';
 
-function Catalog() {
+function Catalog(props) {
   const vendors = [
     {
       title: 'Grifon',
@@ -45,7 +45,6 @@ function Catalog() {
   const buttonHideFilters = document.querySelector(
     '.catalog__showParams_type_hide'
   );
-
   const priceFilter = document.querySelector('.catalog__priceFilter');
   const vendorFilter = document.querySelector('.catalog__vendorFilter');
   const filterBtns = document.querySelector('.catalog__filterBtns');
@@ -365,7 +364,15 @@ function Catalog() {
           </div>
         </div>
 
-        <Products />
+        <Products
+          products={props.products}
+          onProductClick={props.onProductClick}
+          onAddProductToCart={props.onAddProductToCart}
+          inTheBasket={props.inTheBasket}
+          onCartInc={props.onCartInc}
+          onCartDec={props.onCartDec}
+          countInCart={props.countInCart}
+        />
       </div>
     </div>
   );
