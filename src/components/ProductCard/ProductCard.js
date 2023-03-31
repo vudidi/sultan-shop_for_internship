@@ -1,11 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './_ProductCard.scss';
-import checkTheBasket from '../../utils/checkTheBasket';
 const productData = require('../../data/products.json');
 
 function ProductCard(props) {
+  const history = useHistory();
   const products = productData.products;
-  console.log(props.barcode);
+
   let currentProduct = products.filter(
     (item) => item.barcode === props.barcode
   )[0];
@@ -66,7 +67,7 @@ function ProductCard(props) {
 
   return (
     <div className="product-card">
-      <button className="catalog__goBack">
+      <button onClick={() => history.push('/')} className="catalog__goBack">
         <span>Назад</span>
       </button>{' '}
       <img

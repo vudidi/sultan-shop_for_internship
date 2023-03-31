@@ -11,6 +11,7 @@ function Products(props) {
           return (
             <Product
               product={item}
+              key={item.barcode}
               onProductClick={() => {
                 props.onProductClick(item);
               }}
@@ -23,7 +24,6 @@ function Products(props) {
               onCartDec={() => {
                 props.onCartDec(item);
               }}
-              key={item.barcode}
             />
           );
         })}

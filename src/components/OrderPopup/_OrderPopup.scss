@@ -1,0 +1,70 @@
+@import '../../styles/scss/mixine-font';
+@import '../../styles/scss/variables';
+
+.order-popup {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.35s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &_opened {
+    visibility: visible;
+    opacity: 1;
+  }
+  &__container {
+    max-width: 735px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  &__icon {
+    margin: 115px 0 0;
+    background-image: url('../../styles/images/order-icon.svg');
+    width: 59px;
+    height: 59px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &__title {
+    margin: 24px 0 20px;
+    @include font(40px, 500, 48px, $colorBlack);
+  }
+  &__subtitle {
+    margin: 0 0 134px;
+    text-align: center;
+    @include font(20px, 300, 24px, $colorGrey1);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .order-popup {
+    &__container {
+      max-width: 290px;
+    }
+    &__icon {
+      margin: 60px 0 0;
+    }
+    &__title {
+      margin: 20px 0 10px;
+      @include font(20px, 500, 24px, $colorBlack);
+    }
+    &__subtitle {
+      max-width: 197px;
+      margin: 0 0 87px;
+      @include font(12px, 300, 14px, $colorGrey1);
+    }
+  }
+}

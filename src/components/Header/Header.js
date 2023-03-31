@@ -89,9 +89,9 @@ function Header(props) {
 
       <div className="header__interaction">
         <div className="header__logo"></div>
-        <a href="/#" className="header__catalog">
+        <Link to="/" className="header__catalog">
           Каталог <div className="header__catalog-icon"></div>{' '}
-        </a>
+        </Link>
 
         <div className="header__search">
           <input
@@ -144,7 +144,9 @@ function Header(props) {
 
           <div className="header__basket-text">
             <p className="header__basket-title">Корзина</p>
-            <p className="header__basket-price">12&nbsp;478&nbsp;&#8376;</p>
+            <p className="header__basket-price">
+              {props.cartPrice}&nbsp;&#8376;
+            </p>
           </div>
         </div>
       </div>
@@ -179,10 +181,10 @@ function Header(props) {
         </div>
 
         <div className="header__adaptive-container header__adaptive-content">
-          <a href="/#" className="header__catalog">
+          <Link to="/" className="header__catalog">
             <div className="header__catalog-icon"></div>
             Каталог
-          </a>
+          </Link>
           <div className="header__adaptive-line"></div>
           <div className="header__search">
             <button type="submit" className="header__search-btn"></button>
