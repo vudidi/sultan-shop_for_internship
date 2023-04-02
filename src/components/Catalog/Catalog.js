@@ -1,40 +1,21 @@
 import React, { useEffect } from 'react';
 import './_Catalog.scss';
-import Products from '../Products/Products';
+import PaginatedItems from '../PaginatedItems/PaginatedItems';
 import useWindowWidth from '../../utils/getWindowWidth';
+import {
+  getProductCountForVendor,
+  getProductsTypeFilters,
+} from '../../utils/getProductsData.js';
+const productData = require('../../data/products.json');
 
 function Catalog(props) {
-  const vendors = [
-    {
-      title: 'Grifon',
-      productCount: 50,
-    },
-    {
-      title: 'Boyscout',
-      productCount: 12,
-    },
-    {
-      title: 'Paclan',
-      productCount: 122,
-    },
-    {
-      title: 'Булгари Грин',
-      productCount: 5,
-    },
-    {
-      title: 'Нэфис',
-      productCount: 56,
-    },
-    {
-      title: 'AOS',
-      productCount: 45,
-    },
-  ];
-
-  const width = useWindowWidth();
-
   const [checkboxItems, setCheckboxItems] = React.useState([]);
   const [visible, setVisible] = React.useState(4);
+  const [vendorInputValue, setVendorInputValue] = React.useState('');
+
+  const vendors = getProductCountForVendor(productData.products);
+  const typeFilters = getProductsTypeFilters(productData.products);
+  const width = useWindowWidth();
 
   const buttonShowMore = document.querySelector('.catalog__moreBtn_type_show');
   const buttonHide = document.querySelector('.catalog__moreBtn_type_hide');
@@ -97,6 +78,40 @@ function Catalog(props) {
     filterBtns.style.display = 'none';
   }
 
+  function submitFiltersHandler(e) {
+    e.preventDefault();
+    props.onSubmitFilters();
+  }
+
+  function resetFiltersHandler(e) {
+    e.preventDefault();
+    props.onResetFilters();
+    setVendorInputValue('');
+    setCheckboxItems(vendors);
+    document.querySelector('.search-input__error').style.display = 'none';
+  }
+
+  function getVendorInputValue(e) {
+    setVendorInputValue(e.target.value);
+    document.querySelector('.search-input__error').style.display = 'none';
+  }
+
+  function vendorsQueryHandler(e) {
+    e.preventDefault();
+
+    const filteredVendors = vendors.filter((el) => {
+      return el.title
+        .toLowerCase()
+        .includes(vendorInputValue.trim().toLowerCase());
+    });
+
+    if (filteredVendors.length < 1) {
+      document.querySelector('.search-input__error').style.display = 'block';
+    }
+
+    setCheckboxItems(filteredVendors);
+  }
+
   return (
     <div className="catalog">
       <button className="catalog__goBack">
@@ -107,10 +122,16 @@ function Catalog(props) {
         <div className="catalog__top-container">
           {' '}
           <h1 className="catalog__title">Косметика&nbsp;и&nbsp;гигиена</h1>
+          {/* SELECT DESKTOP */}
           <form className="catalog__sort" id="sort">
             <label htmlFor="sort-select">Сортировка&#58;</label>
-            <select className="catalog__select" name="sort" id="sort-select">
-              <option value="" className="catalog__sort-title">
+            <select
+              onChange={(e) => props.onSortClick(e)}
+              className="catalog__select"
+              name="sort"
+              id="sort-select"
+            >
+              <option value="default" className="catalog__sort-title">
                 Выберите опцию
               </option>
               <option className="catalog__sort-title" value="titleAsc">
@@ -119,7 +140,7 @@ function Catalog(props) {
               <option className="catalog__sort-title" value="titleDesc">
                 Название&darr;
               </option>
-              <option className="catalog__sort-title" value="pruciAsc">
+              <option className="catalog__sort-title" value="priceAsc">
                 Цена&uarr;
               </option>
               <option className="catalog__sort-title" value="priceDesc">
@@ -128,62 +149,17 @@ function Catalog(props) {
             </select>
           </form>
         </div>
+        {/* TYPE FILTERS */}
         <ul className="catalog__top-filters">
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Уход за телом
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Уход за руками
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Уход за ногами
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Уход за лицом
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Уход за волосами
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Средства для загара
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Средства для бритья
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Подарочные наборы
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Гигиеническая продукция
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Гигиена полости рта
-            </button>
-          </li>
-          <li>
-            <button className="catalog__top-filter catalog__category-filter">
-              Бумажная продукция
-            </button>
-          </li>
+          {typeFilters.map((el) => {
+            return (
+              <li onClick={(e) => props.onTypeFilterClick(e)} key={el}>
+                <button className="catalog__top-filter catalog__type-filter">
+                  {el}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -202,25 +178,28 @@ function Catalog(props) {
                 className="catalog__showParams catalog__showParams_type_hide catalog__showParams_hidden"
               ></button>
             </div>
+            {/* PRICE FILTER */}
             <div className="catalog__priceFilter">
               <p className="catalog__priceFilter-lable">
                 Цена <span>&#8376;</span>
               </p>
               <div className="catalog__priceFilter-container">
                 <input
-                  type="text"
+                  onChange={(e) => props.priceMinInputHandler(e)}
+                  type="number"
                   className="catalog__priceFilter-input"
                   id="price-filter"
                   name="price-filter"
-                  defaultValue="0"
+                  value={props.priceMin || ''}
                 ></input>
                 &#160;&#160;&#8211;&#160;&#160;
                 <input
-                  type="text"
+                  onChange={(e) => props.priceMaxInputHandler(e)}
+                  type="number"
                   className="catalog__priceFilter-input"
                   id="price-filter"
                   name="price-filter"
-                  defaultValue="100"
+                  value={props.priceMax || ''}
                 ></input>
               </div>
             </div>
@@ -230,13 +209,23 @@ function Catalog(props) {
 
               <div className="catalog__filter-search">
                 <input
+                  onChange={getVendorInputValue}
                   type="text"
                   className="catalog__search-input"
                   id="vendor-filter"
                   name="vendor-filter"
                   placeholder="Поиск..."
+                  minLength={1}
+                  maxLength={20}
+                  value={vendorInputValue}
+                  autoComplete="off"
+                  required
                 ></input>
-                <button className="catalog__search-btn"></button>
+                <button
+                  onClick={vendorsQueryHandler}
+                  className="catalog__search-btn"
+                ></button>
+                <span className="search-input__error">Ничего не найдено</span>
               </div>
 
               {checkboxItems.slice(0, visible).map((item) => {
@@ -273,78 +262,46 @@ function Catalog(props) {
               </div>
             </div>
 
+            {/* FILTERS BUTTON*/}
             <div className="catalog__filterBtns">
-              <button className="catalog__filterBtn catalog__filterBtn_type_submit">
+              <button
+                onClick={submitFiltersHandler}
+                className="catalog__filterBtn catalog__filterBtn_type_submit"
+              >
                 Показать
               </button>
-              <button className="catalog__filterBtn catalog__filterBtn_type_reset"></button>
+              <button
+                onClick={resetFiltersHandler}
+                className="catalog__filterBtn catalog__filterBtn_type_reset"
+              ></button>
             </div>
           </form>
 
           <div className="catalog__categoryFilter" id="categories">
+            {/* TYPE FILTERS */}
             <ul className="catalog__category-items">
-              <li>
-                <button className="catalog__category-item">
-                  Уход за телом
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Уход за руками
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Уход за ногами
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Уход за лицом
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Уход за волосами
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Средства для загара
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Средства для бритья
-                </button>
-              </li>
-
-              <li>
-                <button className="catalog__category-item">
-                  Подарочные наборы
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Гигиеническая продукция
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Гигиена полости рта
-                </button>
-              </li>
-              <li>
-                <button className="catalog__category-item">
-                  Бумажная продукция
-                </button>
-              </li>
+              {typeFilters.map((el) => {
+                return (
+                  <li onClick={(e) => props.onTypeFilterClick(e)} key={el}>
+                    <button className="catalog__category-item catalog__type-filter">
+                      {el}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
+
+            {/* SELECT ADAPTIVE */}
 
             <form className="catalog__sort catalog__sort_adaptive" id="sort">
               <label htmlFor="sort-select">Сортировка&#58;</label>
-              <select className="catalog__select" name="sort" id="sort-select">
-                <option value="" className="catalog__sort-title">
+              <select
+                onChange={(e) => props.onSortClick(e)}
+                className="catalog__select"
+                name="sort"
+                id="sort-select"
+              >
+                <option value="default" className="catalog__sort-title">
                   Выберите опцию
                 </option>
                 <option className="catalog__sort-title" value="titleAsc">
@@ -353,7 +310,7 @@ function Catalog(props) {
                 <option className="catalog__sort-title" value="titleDesc">
                   Название&darr;
                 </option>
-                <option className="catalog__sort-title" value="pruciAsc">
+                <option className="catalog__sort-title" value="priceAsc">
                   Цена&uarr;
                 </option>
                 <option className="catalog__sort-title" value="priceDesc">
@@ -364,15 +321,20 @@ function Catalog(props) {
           </div>
         </div>
 
-        <Products
-          products={props.products}
+        <PaginatedItems
+          items={props.products}
           onProductClick={props.onProductClick}
           onAddProductToCart={props.onAddProductToCart}
           inTheBasket={props.inTheBasket}
           onCartInc={props.onCartInc}
           onCartDec={props.onCartDec}
           countInCart={props.countInCart}
+          itemsPerPage={6}
         />
+
+        <h1 className="catalog__noResuts-message">
+          Ничего не найдено. Повторите поиск с другими параметрами фильтров
+        </h1>
       </div>
     </div>
   );

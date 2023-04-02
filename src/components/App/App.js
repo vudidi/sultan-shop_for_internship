@@ -11,19 +11,35 @@ import ProductCard from '../ProductCard/ProductCard';
 import StartPage from '../StartPage/StartPage';
 import Cart from '../Cart/Cart';
 import OrderPopup from '../OrderPopup/OrderPopup';
+import {
+  sortByTitleAsc,
+  sortByTitleDesc,
+  sortByPriceAsc,
+  sortByPriceDesc,
+} from '../../utils/sortArray';
+import {
+  getProductCountForVendor,
+  getProductsMaxPrice,
+  getProductsMinPrice,
+} from '../../utils/getProductsData.js';
 const productData = require('../../data/products.json');
 
 function App() {
+  const history = useHistory();
+  const priceMin = getProductsMinPrice(productData.products);
+  const priceMax = getProductsMaxPrice(productData.products);
+  const localCart = JSON.parse(localStorage.getItem('cart'));
+  const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
+  const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
+  const vendors = getProductCountForVendor(productData.products);
+  const [products, setProducts] = React.useState(productData.products);
   const [barcode, setBarcode] = React.useState('');
   const [productTitle, setProductTitle] = React.useState('');
   const [cartCount, setCartCount] = React.useState(0);
   const [cartPrice, setCartPrice] = React.useState(0);
   const [isOrderDone, setOrderDone] = React.useState(false);
-  const products = productData.products;
-  const localCart = JSON.parse(localStorage.getItem('cart'));
-  const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
-  const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
-  const history = useHistory();
+  const [inputPriceMin, setInputPriceMin] = React.useState(priceMin);
+  const [inputPriceMax, setInputPriceMax] = React.useState(priceMax);
 
   function getCartProducts() {
     const local = JSON.parse(localStorage.getItem('cart'));
@@ -175,6 +191,121 @@ function App() {
     localStorage.removeItem('cart');
   }
 
+  // SORT
+  function sortProducts(e) {
+    if (e.target.value === 'titleAsc') {
+      setProducts([...products].sort(sortByTitleAsc));
+    } else if (e.target.value === 'titleDesc') {
+      setProducts([...products].sort(sortByTitleDesc));
+    } else if (e.target.value === 'priceAsc') {
+      setProducts([...products].sort(sortByPriceAsc));
+    } else if (e.target.value === 'priceDesc') {
+      setProducts([...products].sort(sortByPriceDesc));
+    } else if (e.target.value === 'default') {
+      setProducts([...productData.products]);
+    }
+  }
+
+  // TYPE FILTER
+  function typeFilterClick(e) {
+    const filteredProducts = [];
+    const productsList = document.querySelector('.catalog__products');
+    const noResultsMessage = document.querySelector(
+      '.catalog__noResuts-message'
+    );
+    productsList.style.display = 'flex';
+    noResultsMessage.style.display = 'none';
+    const typeButtons = document.querySelectorAll('.catalog__type-filter');
+
+    typeButtons.forEach((el) => {
+      if (el.textContent !== e.target.textContent) {
+        el.classList.remove('selected');
+      } else {
+        el.classList.toggle('selected');
+      }
+    });
+
+    if (![...e.target.classList].includes('selected')) {
+      setProducts(productData.products);
+    } else {
+      productData.products.forEach((el) => {
+        el.flags.includes(e.target.textContent) && filteredProducts.push(el);
+      });
+
+      setProducts(filteredProducts);
+    }
+    setInputPriceMin(priceMin);
+    setInputPriceMax(priceMax);
+    const vendorsList = document.querySelectorAll('.catalog__checkbox-input');
+    vendorsList.forEach((el) => {
+      el.checked = false;
+    });
+  }
+
+  // COMMON FILTERS
+  function getInputMinPrice(e) {
+    setInputPriceMin(e.target.value);
+  }
+
+  function getInputMaxPrice(e) {
+    setInputPriceMax(e.target.value);
+  }
+
+  function submitFilters() {
+    const filteredProducts = [];
+    const filterParams = {
+      priceMin: +inputPriceMin,
+      priceMax: +inputPriceMax,
+      vendors: [],
+    };
+
+    const vendorsList = document.querySelectorAll('.catalog__checkbox-input');
+    vendorsList.forEach((el) => {
+      el.checked &&
+        !filterParams.vendors.includes(el.nextSibling.textContent) &&
+        filterParams.vendors.push(el.nextSibling.textContent);
+    });
+
+    productData.products.forEach((el) => {
+      if (
+        el.price >= filterParams.priceMin &&
+        el.price <= filterParams.priceMax &&
+        filterParams.vendors.includes(el.vendor)
+      )
+        filteredProducts.push(el);
+    });
+
+    setProducts(filteredProducts);
+
+    const productsList = document.querySelector('.catalog__products');
+    const noResultsMessage = document.querySelector(
+      '.catalog__noResuts-message'
+    );
+
+    if (filteredProducts.length < 1) {
+      productsList.style.display = 'none';
+      noResultsMessage.style.display = 'block';
+    } else {
+      productsList.style.display = 'flex';
+      noResultsMessage.style.display = 'none';
+    }
+
+    const typeButtons = document.querySelectorAll('.catalog__type-filter');
+    typeButtons.forEach((el) => {
+      el.classList.remove('selected');
+    });
+  }
+
+  function resetFilters() {
+    setInputPriceMin(priceMin);
+    setInputPriceMax(priceMax);
+    const vendorsList = document.querySelectorAll('.catalog__checkbox-input');
+    vendorsList.forEach((el) => {
+      el.checked = false;
+    });
+    setProducts(productData.products);
+  }
+
   // useEffect
   useEffect(() => {
     const productCardLocal = JSON.parse(
@@ -218,6 +349,14 @@ function App() {
                   onAddProductToCart={addProductToCart}
                   onCartInc={cartInc}
                   onCartDec={cartDec}
+                  onSortClick={sortProducts}
+                  onTypeFilterClick={typeFilterClick}
+                  onSubmitFilters={submitFilters}
+                  priceMinInputHandler={getInputMinPrice}
+                  priceMaxInputHandler={getInputMaxPrice}
+                  priceMin={inputPriceMin}
+                  priceMax={inputPriceMax}
+                  onResetFilters={resetFilters}
                   {...props}
                 />
               )}

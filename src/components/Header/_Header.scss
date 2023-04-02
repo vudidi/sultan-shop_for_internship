@@ -278,7 +278,10 @@
   &__basket {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 0 0 0 25px;
+    max-width: 140px;
+    width: 100%;
     &_empty {
       display: none;
     }

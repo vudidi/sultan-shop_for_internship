@@ -49,6 +49,13 @@
       margin: 0 0 0 36px;
     }
   }
+  &__noResuts-message {
+    display: none;
+    max-width: 200px;
+    text-align: center;
+    margin: 50px auto;
+    @include font(14px, 500, 20px, $colorGrey1);
+  }
   &__top {
     display: flex;
     flex-direction: column;
@@ -63,7 +70,6 @@
       & li {
         display: flex;
         margin: 0 10px 10px 0;
-        padding: 18px 19px;
         justify-content: center;
         background-color: $colorWhite;
         box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
@@ -79,11 +85,13 @@
       }
     }
     &-filter {
-      @include font(14px, 400, 17px, $colorGrey1);
-      max-width: 107px;
+      padding: 18px 19px;
       background-color: transparent;
+      max-width: 145px;
+      border-radius: 10px;
     }
   }
+
   &__title {
     @include font(40px, 500, 48px, $colorBlack);
     text-transform: uppercase;
@@ -149,7 +157,7 @@
   &__vendorFilter {
     display: flex;
     flex-direction: column;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     &-lable {
       @include font(16px, 500, 24px, $colorBlack);
     }
@@ -158,6 +166,13 @@
     margin: 15px 0 21px;
     position: relative;
     width: 238px;
+    & span {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 10px;
+      @include font(12px, 500, 18px, rgb(201, 42, 42));
+    }
   }
   &__search-input {
     display: flex;
@@ -384,4 +399,13 @@
       }
     }
   }
+}
+
+.catalog__top-filter.selected {
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.catalog__category-item.selected {
+  @include font(14px, 500, 24px, $colorGrey1);
+  border-bottom: 1px solid $colorGrey1;
 }

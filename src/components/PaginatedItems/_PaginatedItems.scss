@@ -25,6 +25,7 @@
     background: transparent;
     width: 35px;
     height: 35px;
+    cursor: pointer;
     &_active {
       background: linear-gradient(
         90deg,
@@ -32,6 +33,33 @@
         rgba(254, 202, 110, 0.3) 97.25%
       );
       border-radius: 50%;
+      cursor: default;
     }
   }
+}
+
+.page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.aria-disabled:disabled {
+  cursor: default;
+}
+
+[aria-label='Next page'],
+[aria-label='Previous page'] {
+  opacity: 0;
+  cursor: pointer;
+  display: block;
+  width: 9px;
+  height: 16px;
+}
+
+[aria-disabled='true'],
+[aria-current='page'] {
+  cursor: default;
 }
