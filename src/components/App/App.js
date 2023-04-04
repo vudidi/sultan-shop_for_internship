@@ -27,14 +27,14 @@ import getAllProducts from '../../utils/getAllProducts.js';
 
 function App() {
   const allProducts = getAllProducts();
-  const history = useHistory();
   const priceMin = getProductsMinPrice(allProducts);
   const priceMax = getProductsMaxPrice(allProducts);
+  const history = useHistory();
   const localCart = JSON.parse(localStorage.getItem('cart'));
   const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
   const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
   const vendors = getProductCountForVendor(allProducts);
-  const [products, setProducts] = React.useState([]);
+  const [products, setProducts] = React.useState(getAllProducts());
   const [id, setId] = React.useState('');
   const [productTitle, setProductTitle] = React.useState('');
   const [cartCount, setCartCount] = React.useState(0);
@@ -44,8 +44,24 @@ function App() {
   const [inputPriceMax, setInputPriceMax] = React.useState(priceMax);
 
   useEffect(() => {
+    const allProducts = getAllProducts();
+    const priceMin = getProductsMinPrice(allProducts);
+    const priceMax = getProductsMaxPrice(allProducts);
     setProducts(allProducts);
+    setInputPriceMin(priceMin);
+    setInputPriceMax(priceMax);
   }, []);
+
+  function updateProductList() {
+    const allProducts = getAllProducts();
+    const priceMin = getProductsMinPrice(allProducts);
+    const priceMax = getProductsMaxPrice(allProducts);
+    setProducts(allProducts);
+    setInputPriceMin(priceMin);
+    setInputPriceMax(priceMax);
+    setCartCount(0);
+    setCartPrice(0);
+  }
 
   function getCartProducts() {
     const local = JSON.parse(localStorage.getItem('cart'));
@@ -357,7 +373,11 @@ function App() {
       <div className="app">
         <Favicon url={require('../../styles/images/favicon.png')}></Favicon>
 
-        <Header count={cartCount} cartPrice={cartPrice} />
+        <Header
+          count={cartCount}
+          cartPrice={cartPrice}
+          onUpdateProductList={updateProductList}
+        />
 
         <main>
           <Breadcrumbs productTitle={productTitle} />

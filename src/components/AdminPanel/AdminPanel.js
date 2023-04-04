@@ -35,10 +35,10 @@ function AdminPanel() {
   useEffect(() => {
     const localProducts = JSON.parse(localStorage.getItem('products'));
 
-    if (localProducts) {
-      setProducts(localProducts);
-    } else {
+    if (!localProducts || localProducts.length < 1) {
       setProductListEmpty(true);
+    } else if (localProducts) {
+      setProducts(localProducts);
     }
   }, []);
 
@@ -156,6 +156,10 @@ function AdminPanel() {
         updatedLocalList.push(el);
       }
     });
+
+    if (updatedLocalList.length < 1) {
+      setProductListEmpty(true);
+    }
     localStorage.setItem('products', JSON.stringify(updatedLocalList));
     setProducts(updatedLocalList);
   }

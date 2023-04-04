@@ -9,6 +9,10 @@ function Header(props) {
     setBurgerMenuOpen(!isBurgerMenuOpen);
   }
 
+  function updateProductsHandler() {
+    props.onUpdateProductList();
+  }
+
   return (
     <div className="header">
       {/* 1920px - 1440px */}
@@ -89,7 +93,11 @@ function Header(props) {
 
       <div className="header__interaction">
         <div className="header__logo"></div>
-        <Link to="/" className="header__catalog">
+        <Link
+          to="/"
+          onClick={updateProductsHandler}
+          className="header__catalog"
+        >
           Каталог <div className="header__catalog-icon"></div>{' '}
         </Link>
 
@@ -181,7 +189,11 @@ function Header(props) {
         </div>
 
         <div className="header__adaptive-container header__adaptive-content">
-          <Link to="/" className="header__catalog">
+          <Link
+            to="/"
+            onClick={updateProductsHandler}
+            className="header__catalog"
+          >
             <div className="header__catalog-icon"></div>
             Каталог
           </Link>
