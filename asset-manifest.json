@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sultan-shop_for_internship/static/css/main.807432f1.css",
-    "main.js": "/sultan-shop_for_internship/static/js/main.d3d2781a.js",
+    "main.js": "/sultan-shop_for_internship/static/js/main.662fce58.js",
     "static/js/787.93d58c4f.chunk.js": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js",
     "static/media/custom-development.png": "/sultan-shop_for_internship/static/media/custom-development.aa04df25c846e419cd54.png",
     "static/media/empty-list.png": "/sultan-shop_for_internship/static/media/empty-list.21105854b23e88cf3217.png",
@@ -39,11 +39,11 @@
     "static/media/down-icon.svg": "/sultan-shop_for_internship/static/media/down-icon.90a0847e2609fe35eb18.svg",
     "static/media/up-icon.svg": "/sultan-shop_for_internship/static/media/up-icon.80566af4e2a61f1f1d7b.svg",
     "main.807432f1.css.map": "/sultan-shop_for_internship/static/css/main.807432f1.css.map",
-    "main.d3d2781a.js.map": "/sultan-shop_for_internship/static/js/main.d3d2781a.js.map",
+    "main.662fce58.js.map": "/sultan-shop_for_internship/static/js/main.662fce58.js.map",
     "787.93d58c4f.chunk.js.map": "/sultan-shop_for_internship/static/js/787.93d58c4f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.807432f1.css",
-    "static/js/main.d3d2781a.js"
+    "static/js/main.662fce58.js"
   ]
 }
