@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './_Catalog.scss';
 import PaginatedItems from '../PaginatedItems/PaginatedItems';
 import useWindowWidth from '../../utils/getWindowWidth';
@@ -9,12 +10,23 @@ import {
 const productData = require('../../data/products.json');
 
 function Catalog(props) {
+  const allProducts = getAllProducts();
   const [checkboxItems, setCheckboxItems] = React.useState([]);
   const [visible, setVisible] = React.useState(4);
   const [vendorInputValue, setVendorInputValue] = React.useState('');
 
-  const vendors = getProductCountForVendor(productData.products);
-  const typeFilters = getProductsTypeFilters(productData.products);
+  function getAllProducts() {
+    const localProducts = JSON.parse(localStorage.getItem('products'));
+
+    if (!localProducts || localProducts.length < 1) {
+      return productData.products;
+    } else {
+      return localProducts;
+    }
+  }
+
+  const vendors = getProductCountForVendor(allProducts);
+  const typeFilters = getProductsTypeFilters(allProducts);
   const width = useWindowWidth();
 
   const buttonShowMore = document.querySelector('.catalog__moreBtn_type_show');
@@ -96,9 +108,7 @@ function Catalog(props) {
     document.querySelector('.search-input__error').style.display = 'none';
   }
 
-  function vendorsQueryHandler(e) {
-    e.preventDefault();
-
+  function vendorsQueryHandler() {
     const filteredVendors = vendors.filter((el) => {
       return el.title
         .toLowerCase()
@@ -112,8 +122,14 @@ function Catalog(props) {
     setCheckboxItems(filteredVendors);
   }
 
+  function submitVendorsQueryOnEnter(e) {
+    if (e.keyCode === 13) {
+      vendorsQueryHandler();
+    }
+  }
+
   return (
-    <div className="catalog">
+    <section className="catalog">
       <button className="catalog__goBack">
         <span>Назад</span>
       </button>
@@ -209,6 +225,7 @@ function Catalog(props) {
 
               <div className="catalog__filter-search">
                 <input
+                  onKeyDown={submitVendorsQueryOnEnter}
                   onChange={getVendorInputValue}
                   type="text"
                   className="catalog__search-input"
@@ -222,6 +239,7 @@ function Catalog(props) {
                   required
                 ></input>
                 <button
+                  type="button"
                   onClick={vendorsQueryHandler}
                   className="catalog__search-btn"
                 ></button>
@@ -291,6 +309,10 @@ function Catalog(props) {
               })}
             </ul>
 
+            <Link to="/admin" className="admin-link">
+              Перейти в Админ-панель
+            </Link>
+
             {/* SELECT ADAPTIVE */}
 
             <form className="catalog__sort catalog__sort_adaptive" id="sort">
@@ -336,7 +358,7 @@ function Catalog(props) {
           Ничего не найдено. Повторите поиск с другими параметрами фильтров
         </h1>
       </div>
-    </div>
+    </section>
   );
 }
 

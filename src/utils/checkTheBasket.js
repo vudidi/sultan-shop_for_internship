@@ -1,10 +1,8 @@
-const checkTheBasket = (itemBarcode) => {
+const checkTheBasket = (id) => {
   const localCart = JSON.parse(localStorage.getItem('cart'));
 
   if (localCart) {
-    const productInTheBasket = localCart.find(
-      (el) => el.barcode === itemBarcode
-    );
+    const productInTheBasket = localCart.find((el) => el.id === id);
 
     if (productInTheBasket) {
       return false;

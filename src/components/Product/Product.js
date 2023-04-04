@@ -12,9 +12,7 @@ function Product(props) {
   }
 
   if (localCart) {
-    const productCartCount = localCart.find(
-      (el) => el.barcode === props.product.barcode
-    );
+    const productCartCount = localCart.find((el) => el.id === props.product.id);
     if (productCartCount) {
       countInCart = productCartCount.count;
     }
@@ -41,7 +39,7 @@ function Product(props) {
   return (
     <Link
       onClick={handleClick}
-      to={`/product/${props.product.barcode}`}
+      to={`/product/${props.product.id}`}
       className="product"
     >
       <img
@@ -57,7 +55,10 @@ function Product(props) {
               : 'product__volume-icon_type_volume'
           }`}
         ></div>
-        <span className="product__volume-value">{props.product.size}</span>
+        <span className="product__volume-value">
+          {props.product.size}&#160;
+          {props.product.unit === 'volume' ? 'мл' : 'г'}
+        </span>
       </div>
       <div className="product__title">
         <h3 className="product__title-vendor">
@@ -83,7 +84,7 @@ function Product(props) {
         <button
           onClick={handleAddProduct}
           className={`product__button ${
-            !checkTheBasket(props.product.barcode) &&
+            !checkTheBasket(props.product.id) &&
             countInCart > 0 &&
             'product__button_hidden'
           }`}
@@ -94,7 +95,7 @@ function Product(props) {
 
         <div
           className={`product-card__cart-action ${
-            (checkTheBasket(props.product.barcode) || countInCart < 1) &&
+            (checkTheBasket(props.product.id) || countInCart < 1) &&
             'product-card__cart-action_hidden'
           }`}
         >

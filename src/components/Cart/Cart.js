@@ -6,7 +6,7 @@ import CartItem from '../CartItem/CartItem';
 function Cart(props) {
   const history = useHistory();
   return (
-    <div className="cart">
+    <section className="cart">
       <button onClick={() => history.push('/')} className="catalog__goBack">
         <span>Назад</span>
       </button>{' '}
@@ -20,7 +20,7 @@ function Cart(props) {
           return (
             <CartItem
               product={product}
-              key={product.barcode}
+              key={product.id}
               onCartInc={() => {
                 props.onCartInc(product);
               }}
@@ -58,7 +58,7 @@ function Cart(props) {
           Перейти в каталог
         </Link>
       </div>
-    </div>
+    </section>
   );
 }
 

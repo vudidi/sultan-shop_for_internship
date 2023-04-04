@@ -1,10 +1,11 @@
 {
     "products": [
         {
+            "id": "8023440b-7982-4d39-873f-2d71fa3062e4",
             "url": "https://biomio.ru/wp-content/uploads/2020/04/bio_soap_aloe.png",
             "title": "для чувствительной кожи с гелем алоэ вера",
             "unit": "volume",
-            "size": "300 мл",
+            "size": "300",
             "barcode": "978020137062",
             "vendor": "BioMio",
             "brand": "BioMio BIO-SOAP SENSITIVE",
@@ -16,10 +17,11 @@
             ]
         },
         {
+            "id": "0c537b73-6c55-41c4-b1b1-3a06b54568e6",
             "url": "https://ir.ozone.ru/s3/multimedia-g/wc1000/6547053820.jpg",
             "title": "Жидкое мыло, гипоаллергенное, детское, для нежной кожи",
             "unit": "volume",
-            "size": "300 мл",
+            "size": "300",
             "barcode": "974620137962",
             "vendor": "BioMio",
             "brand": "BioMio BABY BIO-SOAP",
@@ -31,10 +33,11 @@
             ]
         },
         {
+            "id": "3c2b2810-5947-4a14-84e9-8e28d744c60f",
             "url": "https://ir.ozone.ru/s3/multimedia-j/wc1000/6479400319.jpg",
             "title": "Набор шампунь и бальзам профессиональный для объема волос",
             "unit": "volume",
-            "size": "500 мл",
+            "size": "500",
             "barcode": "978020337962",
             "vendor": "Mia Erbe",
             "brand": "Mia Erbe",
@@ -45,10 +48,11 @@
             ]
         },
         {
+            "id": "587613da-c5c1-48d5-b77d-a6ac44468de9",
             "url": "https://ir.ozone.ru/s3/multimedia-a/wc1000/6334659502.jpg",
             "title": "Набор средств для волос - Увлажняющий шампунь и кондиционер Moisture Balancing Shampoo 100 мл + Moisture Balancing Conditioner",
             "unit": "volume",
-            "size": "200 мл",
+            "size": "200",
             "barcode": "978020137962",
             "vendor": "LADOR",
             "brand": "LADOR",
@@ -60,10 +64,11 @@
             ]
         },
         {
+            "id": "ba8649b6-bc81-427d-bdee-a9612e01e220",
             "url": "https://ir.ozone.ru/s3/multimedia-r/wc1000/6564721551.jpg",
             "title": "Набор УВЛАЖНЯЮЩИЙ для ухода за волосами: Шампунь для волос и кондиционер",
             "unit": "volume",
-            "size": "200 мл",
+            "size": "200",
             "barcode": "971020137962",
             "vendor": "Esthetic House",
             "brand": "Esthetic House",
@@ -75,10 +80,11 @@
             ]
         },
         {
+            "id": "d064f2a4-97ba-45ce-8e79-d9ea9bd5fb52",
             "url": "https://ir.ozone.ru/s3/multimedia-d/wc1000/6329736325.jpg",
             "title": "Матирующие салфетки для лица (100 шт.) для всех типов кожи с ромашкой",
             "unit": "weight",
-            "size": "40 г",
+            "size": "40",
             "barcode": "978020137362",
             "vendor": "MAYCREATE",
             "brand": "MAYCREATE",
@@ -91,10 +97,11 @@
             ]
         },
         {
+            "id": "d0ae2979-d687-4f2c-a27c-c415af2e4461",
             "url": "https://ir.ozone.ru/s3/multimedia-3/wc1000/6329736243.jpg",
             "title": "Матирующие салфетки для лица (100 шт.) для всех типов кожи с зеленым чаем",
             "unit": "weight",
-            "size": "40 г",
+            "size": "40",
             "barcode": "978023837962",
             "vendor": "MAYCREATE",
             "brand": "MAYCREATE",
@@ -107,10 +114,11 @@
             ]
         },
         {
+            "id": "",
             "url": "https://ir.ozone.ru/s3/multimedia-2/wc1000/6329736098.jpg",
             "title": "Матирующие салфетки для лица (100 шт.) для всех типов кожи с лавандой",
             "unit": "weight",
-            "size": "40 г",
+            "size": "40",
             "barcode": "978050137962",
             "vendor": "MAYCREATE",
             "brand": "MAYCREATE",
@@ -123,10 +131,11 @@
             ]
         },
         {
+            "id": "8698a22c-56d9-4dca-943b-58992138feb3",
             "url": "https://ir.ozone.ru/s3/multimedia-b/wc1000/6329736503.jpg",
             "title": "Матирующие салфетки для лица (100 шт.) для всех типов кожи с мятой",
             "unit": "weight",
-            "size": "40 г",
+            "size": "40",
             "barcode": "958020137962",
             "vendor": "MAYCREATE",
             "brand": "MAYCREATE",
@@ -139,10 +148,11 @@
             ]
         },
         {
+            "id": "bc872a81-2929-4474-a638-34190cf9fc93",
             "url": "https://ir.ozone.ru/s3/multimedia-d/wc1000/6576914125.jpg",
             "title": "Квартет солей для ванны с лавандой",
             "unit": "weight",
-            "size": "300 г",
+            "size": "300",
             "barcode": "978020137126",
             "vendor": "Dr.Nona",
             "brand": "Dr.Nona",
@@ -153,10 +163,11 @@
             ]
         },
         {
+            "id": "6d9b9b57-04ba-4d21-80fb-4e43f0416a90",
             "url": "https://ir.ozone.ru/s3/multimedia-d/wc1000/6576914125.jpg",
             "title": "Квартет солей для ванны с ромашкой",
             "unit": "weight",
-            "size": "300 г",
+            "size": "300",
             "barcode": "978020137910",
             "vendor": "Dr.Nona",
             "brand": "Dr.Nona",
@@ -167,10 +178,11 @@
             ]
         },
         {
+            "id": "ac9c9bdb-1a39-43be-8ff0-b3d9b23fcb13",
             "url": "https://ir.ozone.ru/s3/multimedia-1/wc1000/6334880101.jpg",
             "title": "Крем-баттер для тела Интенсивное питание, ночной",
             "unit": "volume",
-            "size": "300 мл",
+            "size": "300",
             "barcode": "972820137962",
             "vendor": "Natura Siberica",
             "brand": "Natura Siberica Doctor Taiga",
@@ -181,10 +193,11 @@
             ]
         },
         {
+            "id": "2080478e-ec0a-4d2e-a7af-07d824035fe5",
             "url": "https://ir.ozone.ru/s3/multimedia-a/wc1000/6567296686.jpg",
             "title": "Крем по уходу за Спасителем для очень сухих и потрескавшихся рук",
             "unit": "weight",
-            "size": "85 г",
+            "size": "85",
             "barcode": "978020122962",
             "vendor": "Burt's Bees",
             "brand": "Burt's Bees",
@@ -195,10 +208,11 @@
             ]
         },
         {
+            "id": "d6be6b7b-c553-4528-8ce1-e8fca073126a",
             "url": "https://ir.ozone.ru/s3/multimedia-m/wc1000/6493490902.jpg",
             "title": "Крем для рук Lycka для очень сухой кожи",
             "unit": "volume",
-            "size": "75 мл",
+            "size": "75",
             "barcode": "978020137002",
             "vendor": "Barnangen",
             "brand": "Barnangen",
@@ -209,10 +223,11 @@
             ]
         },
         {
+            "id": "5201df1a-cc2b-4f4f-bc05-2fd7753bcb3d",
             "url": "https://ir.ozone.ru/s3/multimedia-g/wc1000/6509028712.jpg",
             "title": "Крем для стоп с мочевиной интенсивно увлажняющий",
             "unit": "volume",
-            "size": "250 мл",
+            "size": "250",
             "barcode": "978330137962",
             "vendor": "POLLYLOOK",
             "brand": "POLLYLOOK",
@@ -223,10 +238,11 @@
             ]
         },
         {
+            "id": "adf4caa3-0e5a-47fa-ac5a-f43377e05a19",
             "url": "https://ir.ozone.ru/s3/multimedia-l/wc1000/6044057325.jpg",
             "title": "Крем для тела с маслом какао",
             "unit": "volume",
-            "size": "50 мл",
+            "size": "50",
             "barcode": "978020557962",
             "vendor": "Himalaya Since 1930",
             "brand": "Himalaya Since 1930",
@@ -239,10 +255,11 @@
             ]
         },
         {
+            "id": "a40cd8c8-8561-4e01-9632-d58934cdd2a7",
             "url": "https://ir.ozone.ru/s3/multimedia-k/wc1000/6098100416.jpg",
             "title": "Гель тонизирующий для умывания для всех типов кожи",
             "unit": "volume",
-            "size": "200 мл",
+            "size": "200",
             "barcode": "978020137550",
             "vendor": "Aevit by Librederm",
             "brand": "Aevit by Librederm",
@@ -254,10 +271,11 @@
             ]
         },
         {
+            "id": "a596b043-90fb-48b6-ba58-463d6930b5f1",
             "url": "https://ir.ozone.ru/s3/multimedia-w/wc1000/6053156372.jpg",
             "title": "Бережный солнцезащитный крем для лица и тела Sun Screen SPF 50",
             "unit": "volume",
-            "size": "50 мл",
+            "size": "50",
             "barcode": "978020137245",
             "vendor": "Mi&Ko",
             "brand": "Mi&Ko",
@@ -269,10 +287,11 @@
             ]
         },
         {
+            "id": "a55480e2-02ef-494c-8178-20e8481b4a78",
             "url": "https://ir.ozone.ru/s3/multimedia-r/wc1000/6084013551.jpg",
             "title": "Мыло для бритья для чувствительной кожи с зеленым чаем и овсом",
             "unit": "volume",
-            "size": "150 мл",
+            "size": "150",
             "barcode": "978023537962",
             "vendor": "PRORASO",
             "brand": "PRORASO",
@@ -284,10 +303,11 @@
             ]
         },
         {
+            "id": "0efb5166-03db-43a0-8555-60fb2ad5f097",
             "url": "https://ir.ozone.ru/s3/multimedia-c/wc1000/6084037980.jpg",
             "title": "Крем для бритья для чувствительной кожи с зеленым чаем и овсом",
             "unit": "volume",
-            "size": "150 мл",
+            "size": "150",
             "barcode": "978678137962",
             "vendor": "PRORASO",
             "brand": "PRORASO",
@@ -299,10 +319,11 @@
             ]
         },
         {
+            "id": "8e409b51-169a-49ca-979f-36a82c172d32",
             "url": "https://ir.ozone.ru/s3/multimedia-a/wc1000/6013746862.jpg",
             "title": "Зубная паста восстановление эмали и здоровье десен, для чувствительных зубов",
             "unit": "volume",
-            "size": "75 мл",
+            "size": "75",
             "barcode": "978020137462",
             "vendor": "Innova Sensitive",
             "brand": "Innova Sensitive",

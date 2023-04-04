@@ -11,6 +11,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import StartPage from '../StartPage/StartPage';
 import Cart from '../Cart/Cart';
 import OrderPopup from '../OrderPopup/OrderPopup';
+import AdminPanel from '../AdminPanel/AdminPanel';
 import {
   sortByTitleAsc,
   sortByTitleDesc,
@@ -25,21 +26,34 @@ import {
 const productData = require('../../data/products.json');
 
 function App() {
+  const allProducts = getAllProducts();
   const history = useHistory();
-  const priceMin = getProductsMinPrice(productData.products);
-  const priceMax = getProductsMaxPrice(productData.products);
+  const priceMin = getProductsMinPrice(allProducts);
+  const priceMax = getProductsMaxPrice(allProducts);
   const localCart = JSON.parse(localStorage.getItem('cart'));
   const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
   const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
-  const vendors = getProductCountForVendor(productData.products);
-  const [products, setProducts] = React.useState(productData.products);
-  const [barcode, setBarcode] = React.useState('');
+  const vendors = getProductCountForVendor(allProducts);
+  const [products, setProducts] = React.useState(allProducts);
+  const [id, setId] = React.useState('');
   const [productTitle, setProductTitle] = React.useState('');
   const [cartCount, setCartCount] = React.useState(0);
   const [cartPrice, setCartPrice] = React.useState(0);
   const [isOrderDone, setOrderDone] = React.useState(false);
   const [inputPriceMin, setInputPriceMin] = React.useState(priceMin);
   const [inputPriceMax, setInputPriceMax] = React.useState(priceMax);
+
+  function getAllProducts() {
+    const localProducts = JSON.parse(localStorage.getItem('products'));
+
+    if (!localProducts || localProducts.length < 1) {
+      return productData.products;
+    } else {
+      return localProducts;
+    }
+  }
+
+  console.log('allProducts', allProducts);
 
   function getCartProducts() {
     const local = JSON.parse(localStorage.getItem('cart'));
@@ -53,12 +67,12 @@ function App() {
   }
 
   function productClick(item) {
-    setBarcode(item.barcode);
+    setId(item.id);
     setProductTitle(`${item.brand} ${item.title}`);
     localStorage.setItem(
       'productCardLocal',
       JSON.stringify({
-        barcode: item.barcode,
+        id: item.id,
         title: `${item.brand} ${item.title}`,
       })
     );
@@ -66,6 +80,7 @@ function App() {
 
   function createCartItem(item) {
     return {
+      id: item.id,
       barcode: item.barcode,
       price: item.price,
       priceSum: item.price,
@@ -85,7 +100,9 @@ function App() {
     setCartCount(cartCount + 1);
     setCartPrice(+cartPrice + +cartItem.price);
 
-    const currentEl = localCart?.find((el) => el.barcode === item.barcode);
+    const currentEl = localCart?.find((el) => {
+      return el.id === item.id;
+    });
 
     if (!localCart) {
       const localCart = [];
@@ -93,7 +110,7 @@ function App() {
       localStorage.setItem('cart', JSON.stringify(localCart));
       localStorage.setItem('cartCount', JSON.stringify(1));
       localStorage.setItem('cartPrice', JSON.stringify(+cartItem.price));
-    } else if (currentEl && currentEl.count === 0) {
+    } else if (currentEl) {
       cartInc(item);
     } else {
       localCart.push(cartItem);
@@ -107,26 +124,34 @@ function App() {
   }
 
   function cartInc(item) {
+    const currentEl = localCart?.find((el) => {
+      return el.id === item.id;
+    });
     if (!localCart) {
       const cartItem = createCartItem(item);
       const localCart = [];
       setCartCount(cartCount + 1);
       setCartPrice(+cartPrice + +cartItem.price);
-
+      localCart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(localCart));
+      localStorage.setItem('cartCount', JSON.stringify(1));
+      localStorage.setItem('cartPrice', JSON.stringify(+cartItem.price));
+    } else if (!currentEl) {
+      const cartItem = createCartItem(item);
+      setCartCount(cartCount + 1);
+      setCartPrice(+cartPrice + +cartItem.price);
       localCart.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(localCart));
       localStorage.setItem('cartCount', JSON.stringify(1));
       localStorage.setItem('cartPrice', JSON.stringify(+cartItem.price));
     } else {
       localCart.forEach((el) => {
-        if (el.barcode === item.barcode) {
+        if (el.id === item.id) {
           el.priceSum = +el.priceSum + +el.price;
           el.count++;
-
           const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
           localStorage.setItem('cartCount', cartCountLocal + 1);
           setCartCount(cartCountLocal + 1);
-
           const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
           localStorage.setItem('cartPrice', +cartPriceLocal + +el.price);
           setCartPrice(+cartPriceLocal + +el.price);
@@ -138,7 +163,7 @@ function App() {
 
   function cartDec(item) {
     localCart.forEach((el) => {
-      if (el.barcode === item.barcode) {
+      if (el.id === item.id) {
         el.priceSum = +el.priceSum - +el.price;
         el.count--;
 
@@ -156,7 +181,7 @@ function App() {
 
   function deleteCartItem(item) {
     localCart.forEach((el) => {
-      if (el.barcode === item.barcode) {
+      if (el.id === item.id) {
         const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
         localStorage.setItem('cartCount', cartCountLocal - +el.count);
         setCartCount(cartCountLocal - +el.count);
@@ -202,7 +227,7 @@ function App() {
     } else if (e.target.value === 'priceDesc') {
       setProducts([...products].sort(sortByPriceDesc));
     } else if (e.target.value === 'default') {
-      setProducts([...productData.products]);
+      setProducts([...allProducts]);
     }
   }
 
@@ -226,9 +251,9 @@ function App() {
     });
 
     if (![...e.target.classList].includes('selected')) {
-      setProducts(productData.products);
+      setProducts(allProducts);
     } else {
-      productData.products.forEach((el) => {
+      allProducts.forEach((el) => {
         el.flags.includes(e.target.textContent) && filteredProducts.push(el);
       });
 
@@ -266,7 +291,13 @@ function App() {
         filterParams.vendors.push(el.nextSibling.textContent);
     });
 
-    productData.products.forEach((el) => {
+    if (filterParams.vendors.length < 1) {
+      vendors.forEach((el) => {
+        filterParams.vendors.push(el.title);
+      });
+    }
+
+    allProducts.forEach((el) => {
       if (
         el.price >= filterParams.priceMin &&
         el.price <= filterParams.priceMax &&
@@ -303,7 +334,7 @@ function App() {
     vendorsList.forEach((el) => {
       el.checked = false;
     });
-    setProducts(productData.products);
+    setProducts(allProducts);
   }
 
   // useEffect
@@ -312,7 +343,7 @@ function App() {
       localStorage.getItem('productCardLocal')
     );
     if (productCardLocal) {
-      setBarcode(productCardLocal.barcode);
+      setId(productCardLocal.id);
       setProductTitle(productCardLocal.title);
     }
   }, []);
@@ -364,10 +395,10 @@ function App() {
 
             <Route
               exact
-              from={`/product/${barcode}`}
+              from={`/product/${id}`}
               render={(props) => (
                 <ProductCard
-                  barcode={barcode}
+                  id={id}
                   onAddProductToCart={addProductToCart}
                   onCartInc={cartInc}
                   onCartDec={cartDec}
@@ -396,6 +427,12 @@ function App() {
             <Route path="/sultan-shop_for_internship">
               <StartPage />
             </Route>
+
+            <Route
+              exact
+              from="/admin"
+              render={(props) => <AdminPanel {...props} />}
+            />
           </Switch>
         </main>
         <Footer />

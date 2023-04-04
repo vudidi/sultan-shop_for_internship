@@ -6,9 +6,7 @@ function CartItem(props) {
   const localCart = JSON.parse(localStorage.getItem('cart'));
 
   if (localCart) {
-    const productCartCount = localCart.find(
-      (el) => el.barcode === props.product.barcode
-    );
+    const productCartCount = localCart.find((el) => el.id === props.product.id);
     if (productCartCount) {
       countInCart = productCartCount.count;
     }
@@ -36,11 +34,11 @@ function CartItem(props) {
   }
 
   return (
-    <li className="cart__item" key={props.product.barcode}>
+    <li className="cart__item">
       <img
         className="cart__item-img"
         src={props.product.image}
-        alt="BioMio BIO-SOAP Экологичное туалетное мыло...."
+        alt={props.product.title}
       />
 
       <div className="cart__text-container">
@@ -52,12 +50,15 @@ function CartItem(props) {
                 : 'product__volume-icon_type_volume'
             }`}
           ></div>
-          <span className="product__volume-value">{props.product.size}</span>
+          <span className="product__volume-value">
+            {props.product.size}&#160;
+            {props.product.unit === 'volume' ? 'мл' : 'г'}
+          </span>
         </div>
 
         <Link
           onClick={handleClick}
-          to={`/product/${props.product.barcode}`}
+          to={`/product/${props.product.id}`}
           className="cart__item-title"
         >{`${props.product.brand} ${props.product.title}`}</Link>
 

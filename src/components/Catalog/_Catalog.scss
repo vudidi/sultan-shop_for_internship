@@ -101,6 +101,7 @@
     align-self: center;
     &_adaptive {
       display: none;
+      margin: 30px 0 0 0;
     }
     & label {
       @include font(16px, 500, 24px, $colorBlack);
@@ -408,4 +409,13 @@
 .catalog__category-item.selected {
   @include font(14px, 500, 24px, $colorGrey1);
   border-bottom: 1px solid $colorGrey1;
+}
+
+.admin-link {
+  @include font(14px, 500, 24px, $colorGrey1);
+  border-bottom: 1px solid $colorGrey1;
+  transition: all ease 0.5s;
+  &:hover {
+    opacity: 0.7;
+  }
 }

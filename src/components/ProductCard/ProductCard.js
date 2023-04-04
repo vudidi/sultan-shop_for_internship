@@ -7,16 +7,14 @@ function ProductCard(props) {
   const history = useHistory();
   const products = productData.products;
 
-  let currentProduct = products.filter(
-    (item) => item.barcode === props.barcode
-  )[0];
+  let currentProduct = products.filter((item) => item.id === props.id)[0];
 
   const localCart = JSON.parse(localStorage.getItem('cart'));
   let countInCart = 0;
 
   if (localCart) {
     const productCartCount = localCart.find(
-      (el) => el.barcode === currentProduct.barcode
+      (el) => el.id === currentProduct.id
     );
     if (productCartCount) {
       countInCart = productCartCount.count;
@@ -95,7 +93,10 @@ function ProductCard(props) {
                 : 'product__volume-icon_type_volume'
             }`}
           ></div>
-          <span className="product__volume-value">{currentProduct.size}</span>
+          <span className="product__volume-value">
+            {currentProduct.size}&#160;
+            {currentProduct.unit === 'volume' ? 'мл' : 'г'}
+          </span>
         </div>
 
         <div className="product-card__container">
@@ -278,12 +279,14 @@ function ProductCard(props) {
 
             <div className="product__weight product__parameter product-card__parameter">
               <span>Вес&#58;&#160;</span>
-              {currentProduct.size}
+              {currentProduct.size}&#160;
+              {currentProduct.unit === 'volume' ? 'мл' : 'г'}
             </div>
 
             <div className="product__amount product__parameter product-card__parameter">
               <span>Объем&#58;&#160;</span>
-              {currentProduct.size}
+              {currentProduct.size}&#160;
+              {currentProduct.unit === 'volume' ? 'мл' : 'г'}
             </div>
 
             <div className="product__count-in-box product__parameter product-card__parameter">

@@ -18,6 +18,8 @@ const Breadcrumbs = (props) => {
       return props.productTitle;
     } else if (pathname.includes('cart')) {
       return 'Корзина';
+    } else if (pathname.includes('admin')) {
+      return 'Админ-панель';
     }
   }
 

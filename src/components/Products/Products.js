@@ -1,19 +1,18 @@
 import React from 'react';
 import './_Products.scss';
 import '../PaginatedItems/_PaginatedItems.scss';
-
 import Product from '../Product/Product';
 import ReactPaginate from 'react-paginate';
 
 function Products(props) {
   return (
-    <div className="catalog__products">
+    <section className="catalog__products">
       <ul className="catalog__cards">
         {props.products?.map((item) => {
           return (
             <Product
               product={item}
-              key={item.barcode}
+              key={item.id}
               onProductClick={() => {
                 props.onProductClick(item);
               }}
@@ -51,7 +50,7 @@ function Products(props) {
         activeClassName="pagination__digit_active"
         renderOnZeroPageCount={null}
       />
-    </div>
+    </section>
   );
 }
 
