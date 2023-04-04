@@ -7,23 +7,13 @@ import {
   getProductCountForVendor,
   getProductsTypeFilters,
 } from '../../utils/getProductsData.js';
-const productData = require('../../data/products.json');
+import getAllProducts from '../../utils/getAllProducts.js';
 
 function Catalog(props) {
   const allProducts = getAllProducts();
   const [checkboxItems, setCheckboxItems] = React.useState([]);
   const [visible, setVisible] = React.useState(4);
   const [vendorInputValue, setVendorInputValue] = React.useState('');
-
-  function getAllProducts() {
-    const localProducts = JSON.parse(localStorage.getItem('products'));
-
-    if (!localProducts || localProducts.length < 1) {
-      return productData.products;
-    } else {
-      return localProducts;
-    }
-  }
 
   const vendors = getProductCountForVendor(allProducts);
   const typeFilters = getProductsTypeFilters(allProducts);

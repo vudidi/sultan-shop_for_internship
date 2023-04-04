@@ -130,6 +130,10 @@ function AdminPanel() {
       setProducts(products);
       setProductListEmpty(false);
 
+      localStorage.removeItem('cart');
+      localStorage.removeItem('cartCount');
+      localStorage.removeItem('cartPrice');
+
       typeCheckboxes.forEach((el) => {
         el.removeAttribute('checked');
       });
@@ -226,9 +230,6 @@ function AdminPanel() {
     } else if (checkboxSelected && radioSelected) {
       const updatedProducts = [];
       updateProductData(productData);
-
-      console.log(productData);
-
       const localProducts = JSON.parse(localStorage.getItem('products'));
       localProducts.forEach((el) => {
         if (el.id === currentProduct.id) {
@@ -237,8 +238,6 @@ function AdminPanel() {
           updatedProducts.push(el);
         }
       });
-
-      console.log('products', updatedProducts);
 
       localStorage.setItem('products', JSON.stringify(updatedProducts));
       setProducts(updatedProducts);

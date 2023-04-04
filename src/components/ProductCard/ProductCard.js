@@ -1,13 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './_ProductCard.scss';
-const productData = require('../../data/products.json');
+import getAllProducts from '../../utils/getAllProducts.js';
 
 function ProductCard(props) {
   const history = useHistory();
-  const products = productData.products;
+  const allProducts = getAllProducts();
 
-  let currentProduct = products.filter((item) => item.id === props.id)[0];
+  let currentProduct = allProducts.filter((item) => item.id === props.id)[0];
 
   const localCart = JSON.parse(localStorage.getItem('cart'));
   let countInCart = 0;

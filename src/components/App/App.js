@@ -23,7 +23,7 @@ import {
   getProductsMaxPrice,
   getProductsMinPrice,
 } from '../../utils/getProductsData.js';
-const productData = require('../../data/products.json');
+import getAllProducts from '../../utils/getAllProducts.js';
 
 function App() {
   const allProducts = getAllProducts();
@@ -34,7 +34,7 @@ function App() {
   const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
   const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
   const vendors = getProductCountForVendor(allProducts);
-  const [products, setProducts] = React.useState(allProducts);
+  const [products, setProducts] = React.useState([]);
   const [id, setId] = React.useState('');
   const [productTitle, setProductTitle] = React.useState('');
   const [cartCount, setCartCount] = React.useState(0);
@@ -43,17 +43,9 @@ function App() {
   const [inputPriceMin, setInputPriceMin] = React.useState(priceMin);
   const [inputPriceMax, setInputPriceMax] = React.useState(priceMax);
 
-  function getAllProducts() {
-    const localProducts = JSON.parse(localStorage.getItem('products'));
-
-    if (!localProducts || localProducts.length < 1) {
-      return productData.products;
-    } else {
-      return localProducts;
-    }
-  }
-
-  console.log('allProducts', allProducts);
+  useEffect(() => {
+    setProducts(allProducts);
+  }, []);
 
   function getCartProducts() {
     const local = JSON.parse(localStorage.getItem('cart'));
@@ -138,12 +130,14 @@ function App() {
       localStorage.setItem('cartPrice', JSON.stringify(+cartItem.price));
     } else if (!currentEl) {
       const cartItem = createCartItem(item);
-      setCartCount(cartCount + 1);
-      setCartPrice(+cartPrice + +cartItem.price);
       localCart.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(localCart));
-      localStorage.setItem('cartCount', JSON.stringify(1));
-      localStorage.setItem('cartPrice', JSON.stringify(+cartItem.price));
+      const cartCountLocal = JSON.parse(localStorage.getItem('cartCount'));
+      localStorage.setItem('cartCount', cartCountLocal + 1);
+      setCartCount(cartCountLocal + 1);
+      const cartPriceLocal = JSON.parse(localStorage.getItem('cartPrice'));
+      localStorage.setItem('cartPrice', +cartPriceLocal + +item.price);
+      setCartPrice(+cartPriceLocal + +item.price);
     } else {
       localCart.forEach((el) => {
         if (el.id === item.id) {
