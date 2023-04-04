@@ -44,7 +44,7 @@ function Product(props) {
     >
       <img
         src={props.product.url}
-        alt="AOS средство для мытья посуды Crystal"
+        alt={`${props.product.brand} ${props.product.title}`}
         className="product__image"
       />
       <div className="product__volume">
