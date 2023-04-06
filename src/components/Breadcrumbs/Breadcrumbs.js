@@ -32,6 +32,11 @@ const Breadcrumbs = (props) => {
   }
   const pathnames = getPathnames();
 
+  function updateProductsHandler() {
+    props.onUpdateProductList();
+    history.push('/');
+  }
+
   return (
     !pathname.includes('sultan-shop_for_internship') && (
       <MUIBreadcrumbs
@@ -39,7 +44,7 @@ const Breadcrumbs = (props) => {
         aria-label="breadcrumb"
       >
         {pathnames.length > 0 ? (
-          <Link onClick={() => history.push('/')}>
+          <Link to="/" onClick={updateProductsHandler}>
             <p className="breadcrumbs breadcrumbs_active">Каталог</p>
           </Link>
         ) : (

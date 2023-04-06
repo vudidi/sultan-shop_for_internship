@@ -59,8 +59,11 @@ function App() {
     setProducts(allProducts);
     setInputPriceMin(priceMin);
     setInputPriceMax(priceMax);
-    setCartCount(0);
-    setCartPrice(0);
+    const localProducts = JSON.parse(localStorage.getItem('products'));
+    if (localProducts && localProducts.length > 0) {
+      setCartCount(0);
+      setCartPrice(0);
+    }
   }
 
   function getCartProducts() {
@@ -380,7 +383,10 @@ function App() {
         />
 
         <main>
-          <Breadcrumbs productTitle={productTitle} />
+          <Breadcrumbs
+            productTitle={productTitle}
+            onUpdateProductList={updateProductList}
+          />
 
           <Switch>
             <Route
