@@ -400,6 +400,7 @@ function AdminPanel() {
               {' '}
               <label htmlFor="bodyCare">
                 <input
+                  data-testid="checkbox-input-bodyCare"
                   onChange={resetCheckboxError}
                   type="checkbox"
                   id="bodyCare"

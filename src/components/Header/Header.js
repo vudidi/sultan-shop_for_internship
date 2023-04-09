@@ -167,6 +167,7 @@ function Header(props) {
       >
         <div className="header__adaptive-container">
           <div
+            data-testid="burger-btn"
             className={`header__burger-icon ${
               isBurgerMenuOpen
                 ? 'header__burger-icon_type_open'
@@ -210,6 +211,7 @@ function Header(props) {
       </div>
 
       <div
+        data-testid="burger"
         className={`header__burger ${
           isBurgerMenuOpen && 'header__burger_open'
         }`}

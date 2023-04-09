@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
-import Wrapper from '../../utils/scrollLayoutEffect';
+import { Route, Switch, useHistory, BrowserRouter } from 'react-router-dom';
 import Favicon from 'react-favicon';
 import '../../styles/scss/styles.scss';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
@@ -42,15 +41,6 @@ function App() {
   const [isOrderDone, setOrderDone] = React.useState(false);
   const [inputPriceMin, setInputPriceMin] = React.useState(priceMin);
   const [inputPriceMax, setInputPriceMax] = React.useState(priceMax);
-
-  useEffect(() => {
-    const allProducts = getAllProducts();
-    const priceMin = getProductsMinPrice(allProducts);
-    const priceMax = getProductsMaxPrice(allProducts);
-    setProducts(allProducts);
-    setInputPriceMin(priceMin);
-    setInputPriceMax(priceMax);
-  }, []);
 
   function updateProductList() {
     const allProducts = getAllProducts();
@@ -370,10 +360,19 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const allProducts = getAllProducts();
+    const priceMin = getProductsMinPrice(allProducts);
+    const priceMax = getProductsMaxPrice(allProducts);
+    setProducts(allProducts);
+    setInputPriceMin(priceMin);
+    setInputPriceMax(priceMax);
+  }, []);
+
   return (
-    <Wrapper>
-      <OrderPopup isOrderDone={isOrderDone} />
+    <BrowserRouter>
       <div className="app">
+        <OrderPopup isOrderDone={isOrderDone} />
         <Favicon url={require('../../styles/images/favicon.png')}></Favicon>
 
         <Header
@@ -457,7 +456,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Wrapper>
+    </BrowserRouter>
   );
 }
 

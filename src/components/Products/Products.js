@@ -7,7 +7,7 @@ import ReactPaginate from 'react-paginate';
 function Products(props) {
   return (
     <section className="catalog__products">
-      <ul className="catalog__cards">
+      <ul data-testid="products-list" className="catalog__cards">
         {props.products?.map((item) => {
           return (
             <Product

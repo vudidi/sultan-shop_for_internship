@@ -119,7 +119,7 @@ function Catalog(props) {
   }
 
   return (
-    <section className="catalog">
+    <section data-testid="catalog-page" className="catalog">
       <button className="catalog__goBack">
         <span>Назад</span>
       </button>
@@ -273,6 +273,8 @@ function Catalog(props) {
             {/* FILTERS BUTTON*/}
             <div className="catalog__filterBtns">
               <button
+                data-testid="show-btn"
+                style={{ backgroundColor: 'rgb(255, 200, 94)' }}
                 onClick={submitFiltersHandler}
                 className="catalog__filterBtn catalog__filterBtn_type_submit"
               >

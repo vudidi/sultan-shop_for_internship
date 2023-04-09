@@ -108,7 +108,9 @@ function Product(props) {
             &#8722;
           </button>
           &#160;&#160;&#160;
-          <span className="product-card__cart-count">{countInCart}</span>
+          <span data-testid="cart-count" className="product-card__cart-count">
+            {countInCart}
+          </span>
           &#160;&#160;&#160;
           <button
             disabled={countInCart > 20}
