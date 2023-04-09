@@ -1,5 +1,10 @@
 # SultanShop - проект интернет-магазина на React для стажировки
-https://vudidi.github.io/sultan-shop_for_internship/
+https://vudidi.github.io/sultan-shop_for_internship/  
+### Тесты добавлены:
+- для компонентов App, AdminPanel, Products, StartPage 
+- для файла getProductsData в папке utils
+
+----------
 
 1. Подготовить страницу Каталога товаров (список товаров)
 - Здесь и в других местах верстку обеспечиваем в том числе адаптивную
